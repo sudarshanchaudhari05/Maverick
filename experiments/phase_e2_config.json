@@ -1,0 +1,225 @@
+{
+  "experiment_name": "Phase E.2: Provenance Chain Security Signal & Evaluation",
+  "phase": "E.2",
+  "version": "1.0.0",
+  "status": "FROZEN",
+  "frozen_seeds": {
+    "E2-A": 4001,
+    "E2-B": 4002,
+    "E2-C": 4003,
+    "E2-D": 4004,
+    "E2-E": 4005
+  },
+  "datasets": {
+    "E2-A": {
+      "n": 3000,
+      "fraud_ratio": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "realized_sample_counts": {
+        "benign": 1500,
+        "suspicious": 721,
+        "poisoned": 779
+      },
+      "realized_percentages": {
+        "benign": 50.0,
+        "suspicious": 24.03,
+        "poisoned": 25.97
+      }
+    },
+    "E2-B": {
+      "n": 1000,
+      "fraud_ratio": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "realized_sample_counts": {
+        "benign": 506,
+        "suspicious": 248,
+        "poisoned": 246
+      },
+      "realized_percentages": {
+        "benign": 50.6,
+        "suspicious": 24.8,
+        "poisoned": 24.6
+      },
+      "sub_splits": {
+        "E2-B_cal": {
+          "role": "Conformal Calibration threshold estimation only",
+          "indices": "0..499",
+          "sample_count": 500,
+          "fraud_samples": 86,
+          "fraud_prevalence": 0.172,
+          "target_mixture": {
+            "benign": 0.5,
+            "suspicious": 0.25,
+            "poisoned": 0.25
+          },
+          "realized_sample_counts": {
+            "benign": 259,
+            "suspicious": 118,
+            "poisoned": 123
+          },
+          "realized_percentages": {
+            "benign": 51.8,
+            "suspicious": 23.6,
+            "poisoned": 24.6
+          }
+        },
+        "E2-B_eval": {
+          "role": "Independent In-Distribution Conformal Evaluation & Risk-Coverage curve",
+          "indices": "500..999",
+          "sample_count": 500,
+          "fraud_samples": 64,
+          "fraud_prevalence": 0.128,
+          "target_mixture": {
+            "benign": 0.5,
+            "suspicious": 0.25,
+            "poisoned": 0.25
+          },
+          "realized_sample_counts": {
+            "benign": 247,
+            "suspicious": 130,
+            "poisoned": 123
+          },
+          "realized_percentages": {
+            "benign": 49.4,
+            "suspicious": 26.0,
+            "poisoned": 24.6
+          }
+        }
+      }
+    },
+    "E2-C": {
+      "n": 2000,
+      "fraud_ratio": 0.15,
+      "target_mixture": {
+        "benign": 0.3,
+        "suspicious": 0.35,
+        "poisoned": 0.35
+      },
+      "realized_sample_counts": {
+        "benign": 629,
+        "suspicious": 674,
+        "poisoned": 697
+      },
+      "realized_percentages": {
+        "benign": 31.45,
+        "suspicious": 33.7,
+        "poisoned": 34.85
+      }
+    },
+    "E2-D": {
+      "n": 1000,
+      "fraud_ratio": 0.5,
+      "target_mixture": {
+        "benign": 0.2,
+        "suspicious": 0.3,
+        "poisoned": 0.5
+      },
+      "realized_sample_counts": {
+        "benign": 198,
+        "suspicious": 280,
+        "poisoned": 522
+      },
+      "realized_percentages": {
+        "benign": 19.8,
+        "suspicious": 28.0,
+        "poisoned": 52.2
+      }
+    },
+    "E2-E": {
+      "n": 1000,
+      "fraud_ratio": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "realized_sample_counts": {
+        "benign": 476,
+        "suspicious": 259,
+        "poisoned": 265
+      },
+      "realized_percentages": {
+        "benign": 47.6,
+        "suspicious": 25.9,
+        "poisoned": 26.5
+      }
+    }
+  },
+  "feature_schemas": {
+    "canonical_transaction_numerical_features": [
+      "transaction_amount",
+      "transaction_hour",
+      "account_age_days",
+      "device_age_days",
+      "device_change",
+      "IP_risk_score",
+      "merchant_risk_score",
+      "transaction_velocity_1h",
+      "transaction_velocity_24h",
+      "average_customer_amount",
+      "amount_deviation",
+      "geographic_deviation",
+      "behavioral_deviation",
+      "failed_authentication_count",
+      "identity_risk_score"
+    ],
+    "canonical_transaction_categorical_features": [
+      "merchant_category",
+      "payment_channel",
+      "authentication_method",
+      "transaction_country",
+      "customer_country"
+    ],
+    "canonical_provenance_features": [
+      "provenance_count",
+      "unique_domain_count",
+      "unknown_domain_count",
+      "provenance_length",
+      "document_type_count",
+      "instruction_source_present",
+      "domain_entropy",
+      "repeated_domain_count",
+      "external_domain_count",
+      "suspicious_source_indicator"
+    ],
+    "structural_provenance_features": [
+      "provenance_count",
+      "unique_domain_count",
+      "provenance_length",
+      "repeated_domain_count",
+      "external_domain_count"
+    ]
+  },
+  "xgboost_hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 6,
+    "learning_rate": 0.08,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "eval_metric": "logloss"
+  },
+  "conformal_parameters": {
+    "nominal_alpha": 0.05,
+    "tau_review": 0.85,
+    "target_fnrs": [
+      0.01,
+      0.02,
+      0.05,
+      0.1
+    ],
+    "tau_accept_bounds": [
+      0.01,
+      0.4
+    ],
+    "calibration_partition": "E2-B_cal (first 500 samples, indices 0..499)",
+    "evaluation_partition": "E2-B_eval (last 500 samples, indices 500..999)"
+  }
+}

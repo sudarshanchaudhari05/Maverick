@@ -40,6 +40,16 @@ class FraudDetector:
         self.model_type = artifact.get("model_type", "unknown")
         self.feature_names = artifact.get("feature_names", [])
 
+    @property
+    def artifact(self) -> Dict[str, Any]:
+        """Return serialized dictionary representation of model artifact."""
+        return {
+            "pipeline": self.pipeline,
+            "model": self.model,
+            "model_type": self.model_type,
+            "feature_names": self.feature_names,
+        }
+
     def load(self, filepath: Path) -> "FraudDetector":
         """Load detector artifact from disk."""
         if not filepath.exists():

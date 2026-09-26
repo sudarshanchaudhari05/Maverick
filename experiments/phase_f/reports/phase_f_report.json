@@ -1,0 +1,703 @@
+{
+  "phase": "F",
+  "title": "Worst-Slice Mining & Targeted Adaptive Attack Discovery",
+  "status": "PHASE F \u2014 IMPLEMENTED, PENDING INDEPENDENT AUDIT",
+  "timestamp": "2026-09-25 19:56:06 UTC",
+  "top_5_discovered_slices": [
+    {
+      "slice_definition": {
+        "amount_bucket": "medium (50-200)",
+        "payment_channel": "pos_contactless"
+      },
+      "depth": 2,
+      "status": "ELIGIBLE",
+      "eligible": true,
+      "total_support": 672,
+      "fraud_support": 21,
+      "legitimate_support": 651,
+      "TP": 4,
+      "TN": 644,
+      "FP": 7,
+      "FN": 17,
+      "FNR": 0.8095,
+      "FNR_ci_lower": 0.6,
+      "FNR_ci_upper": 0.9233,
+      "recall": 0.1905,
+      "precision": 0.3636,
+      "F1": 0.25,
+      "FPR": 0.0108,
+      "mean_fraud_probability": 0.0412,
+      "risk_level_distribution": {
+        "LOW_RISK": 638,
+        "MODERATE_RISK": 23,
+        "HIGH_RISK": 6,
+        "CRITICAL_RISK": 5
+      },
+      "slice_id": "F-SLICE-001"
+    },
+    {
+      "slice_definition": {
+        "merchant_strategy": "single_target",
+        "merchant_category": "retail"
+      },
+      "depth": 2,
+      "status": "ELIGIBLE",
+      "eligible": true,
+      "total_support": 56,
+      "fraud_support": 56,
+      "legitimate_support": 0,
+      "TP": 20,
+      "TN": 0,
+      "FP": 0,
+      "FN": 36,
+      "FNR": 0.6429,
+      "FNR_ci_lower": 0.5119,
+      "FNR_ci_upper": 0.7554,
+      "recall": 0.3571,
+      "precision": 1.0,
+      "F1": 0.5263,
+      "FPR": 0.0,
+      "mean_fraud_probability": 0.3653,
+      "risk_level_distribution": {
+        "LOW_RISK": 27,
+        "CRITICAL_RISK": 10,
+        "HIGH_RISK": 10,
+        "MODERATE_RISK": 9
+      },
+      "slice_id": "F-SLICE-002"
+    },
+    {
+      "slice_definition": {
+        "payment_channel": "pos_contactless",
+        "geographic_region_or_strategy": "domestic"
+      },
+      "depth": 2,
+      "status": "ELIGIBLE",
+      "eligible": true,
+      "total_support": 1103,
+      "fraud_support": 26,
+      "legitimate_support": 1077,
+      "TP": 10,
+      "TN": 1065,
+      "FP": 12,
+      "FN": 16,
+      "FNR": 0.6154,
+      "FNR_ci_lower": 0.4253,
+      "FNR_ci_upper": 0.7757,
+      "recall": 0.3846,
+      "precision": 0.4545,
+      "F1": 0.4167,
+      "FPR": 0.0111,
+      "mean_fraud_probability": 0.04,
+      "risk_level_distribution": {
+        "LOW_RISK": 1051,
+        "MODERATE_RISK": 30,
+        "HIGH_RISK": 13,
+        "CRITICAL_RISK": 9
+      },
+      "slice_id": "F-SLICE-003"
+    },
+    {
+      "slice_definition": {
+        "identity_strategy": "existing_account",
+        "geographic_strategy": "domestic_matching",
+        "merchant_category": "retail"
+      },
+      "depth": 3,
+      "status": "ELIGIBLE",
+      "eligible": true,
+      "total_support": 50,
+      "fraud_support": 50,
+      "legitimate_support": 0,
+      "TP": 20,
+      "TN": 0,
+      "FP": 0,
+      "FN": 30,
+      "FNR": 0.6,
+      "FNR_ci_lower": 0.4618,
+      "FNR_ci_upper": 0.7239,
+      "recall": 0.4,
+      "precision": 1.0,
+      "F1": 0.5714,
+      "FPR": 0.0,
+      "mean_fraud_probability": 0.4193,
+      "risk_level_distribution": {
+        "LOW_RISK": 22,
+        "CRITICAL_RISK": 13,
+        "MODERATE_RISK": 8,
+        "HIGH_RISK": 7
+      },
+      "slice_id": "F-SLICE-004"
+    },
+    {
+      "slice_definition": {
+        "geographic_strategy": "domestic_matching",
+        "merchant_category": "retail",
+        "geographic_region_or_strategy": "domestic"
+      },
+      "depth": 3,
+      "status": "ELIGIBLE",
+      "eligible": true,
+      "total_support": 57,
+      "fraud_support": 57,
+      "legitimate_support": 0,
+      "TP": 24,
+      "TN": 0,
+      "FP": 0,
+      "FN": 33,
+      "FNR": 0.5789,
+      "FNR_ci_lower": 0.4498,
+      "FNR_ci_upper": 0.6981,
+      "recall": 0.4211,
+      "precision": 1.0,
+      "F1": 0.5926,
+      "FPR": 0.0,
+      "mean_fraud_probability": 0.4318,
+      "risk_level_distribution": {
+        "LOW_RISK": 25,
+        "CRITICAL_RISK": 17,
+        "MODERATE_RISK": 8,
+        "HIGH_RISK": 7
+      },
+      "slice_id": "F-SLICE-005"
+    }
+  ],
+  "datasets": {
+    "F-D1": {
+      "size": 4000,
+      "seed": 6001,
+      "fraud_count": 600
+    },
+    "F-D2": {
+      "size": 2000,
+      "seed": 6002,
+      "fraud_count": 300
+    },
+    "F-D3": {
+      "size": 2500,
+      "seed": 6003,
+      "fraud_count": 1250
+    },
+    "F-D4": {
+      "size": 2000,
+      "seed": 6004,
+      "fraud_count": 300
+    }
+  },
+  "success_gates": {
+    "all_gates_passed": true,
+    "G1_slice_improvement": {
+      "rule": "FNR_hardened < FNR_baseline on >= 4 of 5 discovered slices",
+      "slices_improved": 5,
+      "total_slices": 5,
+      "passed": true
+    },
+    "G2_overall_f5_recall": {
+      "rule": "On F-D4, Recall_hardened > Recall_baseline",
+      "baseline_recall": 0.81,
+      "hardened_recall": 0.9467,
+      "delta_recall": 0.1367,
+      "passed": true
+    },
+    "G3_fpr_protection": {
+      "rule": "On F-D4, Hardened FPR must not increase by > +1.0 percentage point",
+      "baseline_fpr": 0.0129,
+      "hardened_fpr": 0.0188,
+      "delta_fpr": 0.0059,
+      "passed": true
+    },
+    "G4_random_attack_preservation": {
+      "rule": "On F-D2, Hardened recall must not decrease by > 2.0 percentage points",
+      "baseline_recall": 0.8167,
+      "hardened_recall": 0.9767,
+      "delta_recall": 0.16,
+      "passed": true
+    },
+    "G5_unseen_targeted_generalization": {
+      "rule": "On F-D4, FNR_hardened < FNR_baseline",
+      "baseline_fnr": 0.19,
+      "hardened_fnr": 0.0533,
+      "delta_fnr": -0.1367,
+      "passed": true
+    }
+  },
+  "eval_fd4_unseen_targeted_v2": {
+    "dataset_name": "F-D4_Unseen_Targeted_V2",
+    "sample_count": 2000,
+    "model_a_baseline": {
+      "total": 2000,
+      "fraud_count": 300,
+      "legitimate_count": 1700,
+      "TP": 243,
+      "TN": 1678,
+      "FP": 22,
+      "FN": 57,
+      "accuracy": 0.9605,
+      "precision": 0.917,
+      "recall": 0.81,
+      "F1": 0.8602,
+      "FPR": 0.0129,
+      "FNR": 0.19,
+      "mean_probability": 0.1473
+    },
+    "model_b_hardened": {
+      "total": 2000,
+      "fraud_count": 300,
+      "legitimate_count": 1700,
+      "TP": 284,
+      "TN": 1668,
+      "FP": 32,
+      "FN": 16,
+      "accuracy": 0.976,
+      "precision": 0.8987,
+      "recall": 0.9467,
+      "F1": 0.9221,
+      "FPR": 0.0188,
+      "FNR": 0.0533,
+      "mean_probability": 0.1692
+    },
+    "delta_metrics": {
+      "delta_recall": 0.1367,
+      "delta_fnr": -0.1367,
+      "delta_f1": 0.0619,
+      "delta_fpr": 0.0059
+    },
+    "mcnemar_test": {
+      "both_correct": 1893,
+      "both_incorrect": 20,
+      "b_model_b_better": 59,
+      "c_model_a_better": 28,
+      "discordant_pairs": 87,
+      "test_statistic": 10.3448,
+      "p_value": 0.0013,
+      "statistically_significant_at_05": true
+    }
+  },
+  "eval_fd2_random_baseline": {
+    "dataset_name": "F-D2_Random_Baseline",
+    "sample_count": 2000,
+    "model_a_baseline": {
+      "total": 2000,
+      "fraud_count": 300,
+      "legitimate_count": 1700,
+      "TP": 245,
+      "TN": 1655,
+      "FP": 45,
+      "FN": 55,
+      "accuracy": 0.95,
+      "precision": 0.8448,
+      "recall": 0.8167,
+      "F1": 0.8305,
+      "FPR": 0.0265,
+      "FNR": 0.1833,
+      "mean_probability": 0.158
+    },
+    "model_b_hardened": {
+      "total": 2000,
+      "fraud_count": 300,
+      "legitimate_count": 1700,
+      "TP": 293,
+      "TN": 1681,
+      "FP": 19,
+      "FN": 7,
+      "accuracy": 0.987,
+      "precision": 0.9391,
+      "recall": 0.9767,
+      "F1": 0.9575,
+      "FPR": 0.0112,
+      "FNR": 0.0233,
+      "mean_probability": 0.1612
+    },
+    "delta_metrics": {
+      "delta_recall": 0.16,
+      "delta_fnr": -0.16,
+      "delta_f1": 0.127,
+      "delta_fpr": -0.0153
+    },
+    "mcnemar_test": {
+      "both_correct": 1886,
+      "both_incorrect": 12,
+      "b_model_b_better": 88,
+      "c_model_a_better": 14,
+      "discordant_pairs": 102,
+      "test_statistic": 52.2451,
+      "p_value": 4.9e-13,
+      "statistically_significant_at_05": true
+    }
+  },
+  "eval_fd1_discovery": {
+    "dataset_name": "F-D1_Discovery",
+    "sample_count": 4000,
+    "model_a_baseline": {
+      "total": 4000,
+      "fraud_count": 600,
+      "legitimate_count": 3400,
+      "TP": 492,
+      "TN": 3308,
+      "FP": 92,
+      "FN": 108,
+      "accuracy": 0.95,
+      "precision": 0.8425,
+      "recall": 0.82,
+      "F1": 0.8311,
+      "FPR": 0.0271,
+      "FNR": 0.18,
+      "mean_probability": 0.1581
+    },
+    "model_b_hardened": {
+      "total": 4000,
+      "fraud_count": 600,
+      "legitimate_count": 3400,
+      "TP": 583,
+      "TN": 3356,
+      "FP": 44,
+      "FN": 17,
+      "accuracy": 0.9848,
+      "precision": 0.9298,
+      "recall": 0.9717,
+      "F1": 0.9503,
+      "FPR": 0.0129,
+      "FNR": 0.0283,
+      "mean_probability": 0.1634
+    },
+    "delta_metrics": {
+      "delta_recall": 0.1517,
+      "delta_fnr": -0.1517,
+      "delta_f1": 0.1192,
+      "delta_fpr": -0.0142
+    },
+    "mcnemar_test": {
+      "both_correct": 3768,
+      "both_incorrect": 29,
+      "b_model_b_better": 171,
+      "c_model_a_better": 32,
+      "discordant_pairs": 203,
+      "test_statistic": 93.8128,
+      "p_value": 3.47e-22,
+      "statistically_significant_at_05": true
+    }
+  },
+  "slice_evaluations_fd4": [
+    {
+      "slice_id": "F-SLICE-001",
+      "slice_definition": {
+        "amount_bucket": "medium (50-200)",
+        "payment_channel": "pos_contactless"
+      },
+      "matched_samples": 1154,
+      "fraud_count": 140,
+      "baseline_fnr": 0.2143,
+      "hardened_fnr": 0.0643,
+      "delta_fnr": -0.15,
+      "baseline_recall": 0.7857,
+      "hardened_recall": 0.9357,
+      "delta_recall": 0.15,
+      "fnr_improved": true,
+      "model_a_baseline": {
+        "total": 1154,
+        "fraud_count": 140,
+        "legitimate_count": 1014,
+        "TP": 110,
+        "TN": 1007,
+        "FP": 7,
+        "FN": 30,
+        "accuracy": 0.9679,
+        "precision": 0.9402,
+        "recall": 0.7857,
+        "F1": 0.856,
+        "FPR": 0.0069,
+        "FNR": 0.2143,
+        "mean_probability": 0.1161
+      },
+      "model_b_hardened": {
+        "total": 1154,
+        "fraud_count": 140,
+        "legitimate_count": 1014,
+        "TP": 131,
+        "TN": 994,
+        "FP": 20,
+        "FN": 9,
+        "accuracy": 0.9749,
+        "precision": 0.8675,
+        "recall": 0.9357,
+        "F1": 0.9003,
+        "FPR": 0.0197,
+        "FNR": 0.0643,
+        "mean_probability": 0.1384
+      },
+      "mcnemar": {
+        "both_correct": 1099,
+        "both_incorrect": 11,
+        "b_model_b_better": 26,
+        "c_model_a_better": 18,
+        "discordant_pairs": 44,
+        "test_statistic": 1.1136,
+        "p_value": 0.29129,
+        "statistically_significant_at_05": false
+      }
+    },
+    {
+      "slice_id": "F-SLICE-002",
+      "slice_definition": {
+        "merchant_strategy": "single_target",
+        "merchant_category": "retail"
+      },
+      "matched_samples": 1337,
+      "fraud_count": 201,
+      "baseline_fnr": 0.2139,
+      "hardened_fnr": 0.0547,
+      "delta_fnr": -0.1592,
+      "baseline_recall": 0.7861,
+      "hardened_recall": 0.9453,
+      "delta_recall": 0.1592,
+      "fnr_improved": true,
+      "model_a_baseline": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 158,
+        "TN": 1117,
+        "FP": 19,
+        "FN": 43,
+        "accuracy": 0.9536,
+        "precision": 0.8927,
+        "recall": 0.7861,
+        "F1": 0.836,
+        "FPR": 0.0167,
+        "FNR": 0.2139,
+        "mean_probability": 0.1491
+      },
+      "model_b_hardened": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 190,
+        "TN": 1112,
+        "FP": 24,
+        "FN": 11,
+        "accuracy": 0.9738,
+        "precision": 0.8879,
+        "recall": 0.9453,
+        "F1": 0.9157,
+        "FPR": 0.0211,
+        "FNR": 0.0547,
+        "mean_probability": 0.1742
+      },
+      "mcnemar": {
+        "both_correct": 1256,
+        "both_incorrect": 16,
+        "b_model_b_better": 46,
+        "c_model_a_better": 19,
+        "discordant_pairs": 65,
+        "test_statistic": 10.4,
+        "p_value": 0.00126,
+        "statistically_significant_at_05": true
+      }
+    },
+    {
+      "slice_id": "F-SLICE-003",
+      "slice_definition": {
+        "payment_channel": "pos_contactless",
+        "geographic_region_or_strategy": "domestic"
+      },
+      "matched_samples": 1154,
+      "fraud_count": 140,
+      "baseline_fnr": 0.2143,
+      "hardened_fnr": 0.0643,
+      "delta_fnr": -0.15,
+      "baseline_recall": 0.7857,
+      "hardened_recall": 0.9357,
+      "delta_recall": 0.15,
+      "fnr_improved": true,
+      "model_a_baseline": {
+        "total": 1154,
+        "fraud_count": 140,
+        "legitimate_count": 1014,
+        "TP": 110,
+        "TN": 1007,
+        "FP": 7,
+        "FN": 30,
+        "accuracy": 0.9679,
+        "precision": 0.9402,
+        "recall": 0.7857,
+        "F1": 0.856,
+        "FPR": 0.0069,
+        "FNR": 0.2143,
+        "mean_probability": 0.1161
+      },
+      "model_b_hardened": {
+        "total": 1154,
+        "fraud_count": 140,
+        "legitimate_count": 1014,
+        "TP": 131,
+        "TN": 994,
+        "FP": 20,
+        "FN": 9,
+        "accuracy": 0.9749,
+        "precision": 0.8675,
+        "recall": 0.9357,
+        "F1": 0.9003,
+        "FPR": 0.0197,
+        "FNR": 0.0643,
+        "mean_probability": 0.1384
+      },
+      "mcnemar": {
+        "both_correct": 1099,
+        "both_incorrect": 11,
+        "b_model_b_better": 26,
+        "c_model_a_better": 18,
+        "discordant_pairs": 44,
+        "test_statistic": 1.1136,
+        "p_value": 0.29129,
+        "statistically_significant_at_05": false
+      }
+    },
+    {
+      "slice_id": "F-SLICE-004",
+      "slice_definition": {
+        "identity_strategy": "existing_account",
+        "geographic_strategy": "domestic_matching",
+        "merchant_category": "retail"
+      },
+      "matched_samples": 1337,
+      "fraud_count": 201,
+      "baseline_fnr": 0.2139,
+      "hardened_fnr": 0.0547,
+      "delta_fnr": -0.1592,
+      "baseline_recall": 0.7861,
+      "hardened_recall": 0.9453,
+      "delta_recall": 0.1592,
+      "fnr_improved": true,
+      "model_a_baseline": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 158,
+        "TN": 1117,
+        "FP": 19,
+        "FN": 43,
+        "accuracy": 0.9536,
+        "precision": 0.8927,
+        "recall": 0.7861,
+        "F1": 0.836,
+        "FPR": 0.0167,
+        "FNR": 0.2139,
+        "mean_probability": 0.1491
+      },
+      "model_b_hardened": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 190,
+        "TN": 1112,
+        "FP": 24,
+        "FN": 11,
+        "accuracy": 0.9738,
+        "precision": 0.8879,
+        "recall": 0.9453,
+        "F1": 0.9157,
+        "FPR": 0.0211,
+        "FNR": 0.0547,
+        "mean_probability": 0.1742
+      },
+      "mcnemar": {
+        "both_correct": 1256,
+        "both_incorrect": 16,
+        "b_model_b_better": 46,
+        "c_model_a_better": 19,
+        "discordant_pairs": 65,
+        "test_statistic": 10.4,
+        "p_value": 0.00126,
+        "statistically_significant_at_05": true
+      }
+    },
+    {
+      "slice_id": "F-SLICE-005",
+      "slice_definition": {
+        "geographic_strategy": "domestic_matching",
+        "merchant_category": "retail",
+        "geographic_region_or_strategy": "domestic"
+      },
+      "matched_samples": 1337,
+      "fraud_count": 201,
+      "baseline_fnr": 0.2139,
+      "hardened_fnr": 0.0547,
+      "delta_fnr": -0.1592,
+      "baseline_recall": 0.7861,
+      "hardened_recall": 0.9453,
+      "delta_recall": 0.1592,
+      "fnr_improved": true,
+      "model_a_baseline": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 158,
+        "TN": 1117,
+        "FP": 19,
+        "FN": 43,
+        "accuracy": 0.9536,
+        "precision": 0.8927,
+        "recall": 0.7861,
+        "F1": 0.836,
+        "FPR": 0.0167,
+        "FNR": 0.2139,
+        "mean_probability": 0.1491
+      },
+      "model_b_hardened": {
+        "total": 1337,
+        "fraud_count": 201,
+        "legitimate_count": 1136,
+        "TP": 190,
+        "TN": 1112,
+        "FP": 24,
+        "FN": 11,
+        "accuracy": 0.9738,
+        "precision": 0.8879,
+        "recall": 0.9453,
+        "F1": 0.9157,
+        "FPR": 0.0211,
+        "FNR": 0.0547,
+        "mean_probability": 0.1742
+      },
+      "mcnemar": {
+        "both_correct": 1256,
+        "both_incorrect": 16,
+        "b_model_b_better": 46,
+        "c_model_a_better": 19,
+        "discordant_pairs": 65,
+        "test_statistic": 10.4,
+        "p_value": 0.00126,
+        "statistically_significant_at_05": true
+      }
+    }
+  ],
+  "leakage_audit": {
+    "total_pairs_checked": 6,
+    "zero_leakage_passed": true,
+    "pair_overlap_counts": {
+      "F-D1_vs_F-D2": 0,
+      "F-D1_vs_F-D3": 0,
+      "F-D1_vs_F-D4": 0,
+      "F-D2_vs_F-D3": 0,
+      "F-D2_vs_F-D4": 0,
+      "F-D3_vs_F-D4": 0
+    }
+  },
+  "training_metadata": {
+    "baseline_training_samples": 5000,
+    "baseline_fraud_count": 750,
+    "fd3_samples": 2500,
+    "fd3_fraud_count": 1250,
+    "total_hardened_train_samples": 7500,
+    "total_hardened_fraud_count": 2000,
+    "scale_pos_weight": 2.75,
+    "hyperparameters": {
+      "n_estimators": 150,
+      "max_depth": 6,
+      "learning_rate": 0.08,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 6003
+    }
+  }
+}

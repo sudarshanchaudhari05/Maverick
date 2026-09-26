@@ -12,35 +12,31 @@ from src.api.schemas import (
 from src.detection.risk_engine import (
     RiskDecisionEngine,
     PolicyMode,
-    evaluate_transaction as eval_tx_func,
 )
 from src.detection.mitigation import MitigationSimulator
+from src.detection.model_registry import ModelRegistry
 
 router = APIRouter(prefix="/risk", tags=["Risk Decision Engine"])
 
 
 @router.post("/evaluate-transaction", response_model=EvaluateTransactionResponse)
 def evaluate_transaction(req: EvaluateTransactionRequest, request: Request) -> EvaluateTransactionResponse:
-    detector_hardened = getattr(request.app.state, "detector_hardened", None)
-    if detector_hardened is None:
-        from src.utils.config import MODELS_DIR
-        from src.detection.predict import FraudDetector
-        hardened_path = MODELS_DIR / "hardened_zero_day_detector.joblib"
-        if not hardened_path.exists():
-            hardened_path = MODELS_DIR / "hardened_detector.joblib"
-        if not hardened_path.exists():
-            hardened_path = MODELS_DIR / "baseline_detector.joblib"
-        if hardened_path.exists():
-            try:
-                detector_hardened = FraudDetector(artifact_path=hardened_path)
-                request.app.state.detector_hardened = detector_hardened
-            except Exception:
-                pass
-        if detector_hardened is None:
-            raise HTTPException(
-                status_code=503,
-                detail="Hardened detector model is not loaded in application state.",
-            )
+    registry = getattr(request.app.state, "model_registry", None) or ModelRegistry()
+    detector = getattr(request.app.state, "detector_active", None)
+    active_version = getattr(request.app.state, "active_model_version", None) or registry.get_active_version()
+
+    if detector is None:
+        try:
+            detector = registry.load_active_detector()
+            request.app.state.detector_active = detector
+        except Exception:
+            detector = getattr(request.app.state, "detector_hardened", None) or getattr(request.app.state, "detector_baseline", None)
+
+    if detector is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Active detector model is not loaded in application state.",
+        )
 
     # Resolve policy mode
     mode_str = req.policy_mode.upper()
@@ -51,7 +47,8 @@ def evaluate_transaction(req: EvaluateTransactionRequest, request: Request) -> E
 
     engine = RiskDecisionEngine(
         policy_mode=policy_mode,
-        detector=detector_hardened,
+        detector=detector,
+        model_version=active_version,
     )
 
     tx_dict = req.model_dump()

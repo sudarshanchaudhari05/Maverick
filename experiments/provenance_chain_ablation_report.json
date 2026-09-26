@@ -1,0 +1,785 @@
+{
+  "experiment_name": "Phase D: Provenance Chain Security Signal Evaluation",
+  "experiment_version": "2.0.0",
+  "timestamp": "2026-09-19 06:58:55 UTC",
+  "methodology_frozen": true,
+  "provenance_generation_method": "label-independent",
+  "provenance_generator_inputs": [
+    "transaction_features",
+    "rng_seed",
+    "predetermined_mixture"
+  ],
+  "provenance_mixture": {
+    "D1_D2_D3": {
+      "benign": 0.5,
+      "suspicious": 0.25,
+      "poisoned": 0.25
+    },
+    "D4_poisoning": {
+      "benign": 0.2,
+      "suspicious": 0.3,
+      "poisoned": 0.5
+    },
+    "D5_shifted": {
+      "benign": 0.4,
+      "suspicious": 0.3,
+      "poisoned": 0.3
+    }
+  },
+  "label_conditioning": false,
+  "methodology_correction": "The previous Phase D implementation was deemed invalid for primary scientific comparison because SyntheticProvenanceGenerator inspected row['fraud_label'] and restricted adversarial poisoned chains exclusively to fraud transactions (resulting in instruction_source_present=0 for all legitimate transactions). In this authoritative corrected version, provenance is generated strictly independently of fraud labels via predetermined exogenous mixture sampling, ensuring poisoned/instruction context can occur on legitimate transactions and benign context can occur on fraud transactions.",
+  "evaluation_rows_shared_between_models": true,
+  "random_seeds": {
+    "D1_train": 4001,
+    "D2_calibration": 4002,
+    "D3_held_out": 4003,
+    "D4_poisoned": 4004,
+    "D5_shifted": 4005,
+    "model_training": 4001
+  },
+  "dataset_sizes": {
+    "D1_train": 3000,
+    "D2_calibration": 1000,
+    "D3_held_out": 2000,
+    "D4_poisoned": 1000,
+    "D5_shifted": 1000
+  },
+  "class_balance": {
+    "D1_train_fraud": 450,
+    "D2_calibration_fraud": 150,
+    "D3_held_out_fraud": 300,
+    "D4_poisoned_fraud": 500,
+    "D5_shifted_fraud": 150
+  },
+  "four_way_counts": {
+    "D1": {
+      "legit_benign": 1282,
+      "legit_suspicious_or_poisoned": 1268,
+      "fraud_benign": 218,
+      "fraud_suspicious_or_poisoned": 232,
+      "total": 3000
+    },
+    "D2": {
+      "legit_benign": 417,
+      "legit_suspicious_or_poisoned": 433,
+      "fraud_benign": 89,
+      "fraud_suspicious_or_poisoned": 61,
+      "total": 1000
+    },
+    "D3": {
+      "legit_benign": 876,
+      "legit_suspicious_or_poisoned": 824,
+      "fraud_benign": 137,
+      "fraud_suspicious_or_poisoned": 163,
+      "total": 2000
+    },
+    "D4": {
+      "legit_benign": 88,
+      "legit_suspicious_or_poisoned": 412,
+      "fraud_benign": 110,
+      "fraud_suspicious_or_poisoned": 390,
+      "total": 1000
+    },
+    "D5": {
+      "legit_benign": 329,
+      "legit_suspicious_or_poisoned": 521,
+      "fraud_benign": 61,
+      "fraud_suspicious_or_poisoned": 89,
+      "total": 1000
+    }
+  },
+  "label_independence_diagnostics_d1": {
+    "provenance_count": {
+      "mean_legitimate": 3.1329,
+      "mean_fraud": 3.1511,
+      "correlation": 0.0087
+    },
+    "unique_domain_count": {
+      "mean_legitimate": 2.9365,
+      "mean_fraud": 2.9267,
+      "correlation": -0.0048
+    },
+    "unknown_domain_count": {
+      "mean_legitimate": 0.7576,
+      "mean_fraud": 0.7667,
+      "correlation": 0.0038
+    },
+    "provenance_length": {
+      "mean_legitimate": 168.5608,
+      "mean_fraud": 169.7,
+      "correlation": 0.0095
+    },
+    "document_type_count": {
+      "mean_legitimate": 0.4529,
+      "mean_fraud": 0.44,
+      "correlation": -0.0083
+    },
+    "instruction_source_present": {
+      "mean_legitimate": 0.2612,
+      "mean_fraud": 0.2511,
+      "correlation": -0.0082
+    },
+    "domain_entropy": {
+      "mean_legitimate": 0.7786,
+      "mean_fraud": 0.7792,
+      "correlation": 0.0039
+    },
+    "repeated_domain_count": {
+      "mean_legitimate": 0.1965,
+      "mean_fraud": 0.2244,
+      "correlation": 0.0226
+    },
+    "external_domain_count": {
+      "mean_legitimate": 1.8275,
+      "mean_fraud": 1.8756,
+      "correlation": 0.0174
+    },
+    "suspicious_source_indicator": {
+      "mean_legitimate": 0.4973,
+      "mean_fraud": 0.5156,
+      "correlation": 0.0131
+    }
+  },
+  "label_independence_diagnostics_d3": {
+    "provenance_count": {
+      "mean_legitimate": 3.1371,
+      "mean_fraud": 3.19,
+      "correlation": 0.0252
+    },
+    "unique_domain_count": {
+      "mean_legitimate": 2.9294,
+      "mean_fraud": 2.9933,
+      "correlation": 0.0307
+    },
+    "unknown_domain_count": {
+      "mean_legitimate": 0.7353,
+      "mean_fraud": 0.8033,
+      "correlation": 0.0292
+    },
+    "provenance_length": {
+      "mean_legitimate": 167.5188,
+      "mean_fraud": 172.92,
+      "correlation": 0.0451
+    },
+    "document_type_count": {
+      "mean_legitimate": 0.4724,
+      "mean_fraud": 0.4367,
+      "correlation": -0.0229
+    },
+    "instruction_source_present": {
+      "mean_legitimate": 0.2335,
+      "mean_fraud": 0.2933,
+      "correlation": 0.0498
+    },
+    "domain_entropy": {
+      "mean_legitimate": 0.7767,
+      "mean_fraud": 0.7856,
+      "correlation": 0.0573
+    },
+    "repeated_domain_count": {
+      "mean_legitimate": 0.2076,
+      "mean_fraud": 0.1967,
+      "correlation": -0.0088
+    },
+    "external_domain_count": {
+      "mean_legitimate": 1.7724,
+      "mean_fraud": 1.8833,
+      "correlation": 0.0408
+    },
+    "suspicious_source_indicator": {
+      "mean_legitimate": 0.4847,
+      "mean_fraud": 0.5433,
+      "correlation": 0.0419
+    }
+  },
+  "feature_schema": {
+    "transaction_features": [
+      "transaction_amount",
+      "transaction_hour",
+      "account_age_days",
+      "device_age_days",
+      "device_change",
+      "IP_risk_score",
+      "merchant_risk_score",
+      "transaction_velocity_1h",
+      "transaction_velocity_24h",
+      "average_customer_amount",
+      "amount_deviation",
+      "geographic_deviation",
+      "behavioral_deviation",
+      "failed_authentication_count",
+      "identity_risk_score",
+      "merchant_category",
+      "payment_channel",
+      "authentication_method",
+      "transaction_country",
+      "customer_country"
+    ],
+    "provenance_features": [
+      "provenance_count",
+      "unique_domain_count",
+      "unknown_domain_count",
+      "provenance_length",
+      "document_type_count",
+      "instruction_source_present",
+      "domain_entropy",
+      "repeated_domain_count",
+      "external_domain_count",
+      "suspicious_source_indicator"
+    ],
+    "total_features_model_a": 20,
+    "total_features_model_b": 30
+  },
+  "leakage_checks": {
+    "status": "PASS",
+    "forbidden_token_check": "Zero forbidden tokens in feature schemas",
+    "dataset_overlap_check": {
+      "D1_vs_D2": 0,
+      "D1_vs_D3": 0,
+      "D1_vs_D4": 0,
+      "D1_vs_D5": 0,
+      "D2_vs_D3": 0,
+      "D2_vs_D4": 0,
+      "D2_vs_D5": 0,
+      "D3_vs_D4": 0,
+      "D3_vs_D5": 0,
+      "D4_vs_D5": 0
+    },
+    "label_isolation_check": "No trivial correlation or target presence in features",
+    "temporal_independence": "All features computed per-transaction without sequence lookahead"
+  },
+  "metric_definitions": {
+    "observed_fnr": "Population-level fraud leakage rate: FN / total_actual_fraud across all incoming transactions in the dataset.",
+    "false_omission_rate": "False Omission Rate (FOR = 1 - NPV): FN / (TN + FN) = FN / accepted_count. Fraction of auto-accepted transactions that are actually fraudulent (false fraud contamination among auto-accepted transactions). Not conventional FNR.",
+    "selective_fnr": "Selective False Negative Rate: FN / (TP + FN) = 1 - recall_auto on decided transactions.",
+    "coverage": "Fraction of transactions receiving automated decisions: (accepted_count + blocked_count) / total_evaluated.",
+    "abstention_rate": "Fraction of transactions routed to human analyst review: human_review_count / total_evaluated."
+  },
+  "model_a_results_d3": {
+    "accuracy": 0.983,
+    "precision": 0.9463,
+    "recall": 0.94,
+    "f1": 0.9431,
+    "roc_auc": 0.9965,
+    "pr_auc": 0.9848,
+    "fpr": 0.0094,
+    "false_negatives": 18,
+    "false_positives": 16,
+    "true_positives": 282,
+    "true_negatives": 1684,
+    "total": 2000,
+    "actual_fraud": 300,
+    "actual_legit": 1700
+  },
+  "model_b_results_d3": {
+    "accuracy": 0.982,
+    "precision": 0.9459,
+    "recall": 0.9333,
+    "f1": 0.9396,
+    "roc_auc": 0.9958,
+    "pr_auc": 0.984,
+    "fpr": 0.0094,
+    "false_negatives": 20,
+    "false_positives": 16,
+    "true_positives": 280,
+    "true_negatives": 1684,
+    "total": 2000,
+    "actual_fraud": 300,
+    "actual_legit": 1700
+  },
+  "group_b_results_d3": {
+    "accuracy": 0.983,
+    "precision": 0.9463,
+    "recall": 0.94,
+    "f1": 0.9431,
+    "roc_auc": 0.9967,
+    "pr_auc": 0.9856,
+    "fpr": 0.0094,
+    "false_negatives": 18,
+    "false_positives": 16,
+    "true_positives": 282,
+    "true_negatives": 1684,
+    "total": 2000,
+    "actual_fraud": 300,
+    "actual_legit": 1700
+  },
+  "conformal_results_d3": {
+    "model_a": [
+      {
+        "target_fnr": 0.01,
+        "tau_accept": 0.1332,
+        "tau_review": 0.85,
+        "observed_fnr": 0.0467,
+        "selective_fnr": 0.0504,
+        "false_omission_rate": 0.0084,
+        "coverage": 0.968,
+        "abstention_rate": 0.032,
+        "auto_accept_count": 1667,
+        "auto_reject_count": 269,
+        "human_review_count": 64,
+        "false_negatives": 14,
+        "false_positives": 5,
+        "true_positives": 264,
+        "true_negatives": 1653
+      },
+      {
+        "target_fnr": 0.02,
+        "tau_accept": 0.2664,
+        "tau_review": 0.85,
+        "observed_fnr": 0.0567,
+        "selective_fnr": 0.0605,
+        "false_omission_rate": 0.0101,
+        "coverage": 0.9795,
+        "abstention_rate": 0.0205,
+        "auto_accept_count": 1690,
+        "auto_reject_count": 269,
+        "human_review_count": 41,
+        "false_negatives": 17,
+        "false_positives": 5,
+        "true_positives": 264,
+        "true_negatives": 1673
+      },
+      {
+        "target_fnr": 0.05,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.06,
+        "selective_fnr": 0.0638,
+        "false_omission_rate": 0.0106,
+        "coverage": 0.983,
+        "abstention_rate": 0.017,
+        "auto_accept_count": 1697,
+        "auto_reject_count": 269,
+        "human_review_count": 34,
+        "false_negatives": 18,
+        "false_positives": 5,
+        "true_positives": 264,
+        "true_negatives": 1679
+      },
+      {
+        "target_fnr": 0.1,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.06,
+        "selective_fnr": 0.0638,
+        "false_omission_rate": 0.0106,
+        "coverage": 0.983,
+        "abstention_rate": 0.017,
+        "auto_accept_count": 1697,
+        "auto_reject_count": 269,
+        "human_review_count": 34,
+        "false_negatives": 18,
+        "false_positives": 5,
+        "true_positives": 264,
+        "true_negatives": 1679
+      }
+    ],
+    "model_b": [
+      {
+        "target_fnr": 0.01,
+        "tau_accept": 0.1545,
+        "tau_review": 0.85,
+        "observed_fnr": 0.05,
+        "selective_fnr": 0.0542,
+        "false_omission_rate": 0.009,
+        "coverage": 0.969,
+        "abstention_rate": 0.031,
+        "auto_accept_count": 1670,
+        "auto_reject_count": 268,
+        "human_review_count": 62,
+        "false_negatives": 15,
+        "false_positives": 6,
+        "true_positives": 262,
+        "true_negatives": 1655
+      },
+      {
+        "target_fnr": 0.02,
+        "tau_accept": 0.309,
+        "tau_review": 0.85,
+        "observed_fnr": 0.06,
+        "selective_fnr": 0.0643,
+        "false_omission_rate": 0.0106,
+        "coverage": 0.9805,
+        "abstention_rate": 0.0195,
+        "auto_accept_count": 1693,
+        "auto_reject_count": 268,
+        "human_review_count": 39,
+        "false_negatives": 18,
+        "false_positives": 6,
+        "true_positives": 262,
+        "true_negatives": 1675
+      },
+      {
+        "target_fnr": 0.05,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.06,
+        "selective_fnr": 0.0643,
+        "false_omission_rate": 0.0106,
+        "coverage": 0.9835,
+        "abstention_rate": 0.0165,
+        "auto_accept_count": 1699,
+        "auto_reject_count": 268,
+        "human_review_count": 33,
+        "false_negatives": 18,
+        "false_positives": 6,
+        "true_positives": 262,
+        "true_negatives": 1681
+      },
+      {
+        "target_fnr": 0.1,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.06,
+        "selective_fnr": 0.0643,
+        "false_omission_rate": 0.0106,
+        "coverage": 0.9835,
+        "abstention_rate": 0.0165,
+        "auto_accept_count": 1699,
+        "auto_reject_count": 268,
+        "human_review_count": 33,
+        "false_negatives": 18,
+        "false_positives": 6,
+        "true_positives": 262,
+        "true_negatives": 1681
+      }
+    ]
+  },
+  "poisoning_results_d4": {
+    "model_a": {
+      "accuracy": 0.973,
+      "precision": 0.9896,
+      "recall": 0.956,
+      "f1": 0.9725,
+      "roc_auc": 0.9947,
+      "pr_auc": 0.9959,
+      "fpr": 0.01,
+      "false_negatives": 22,
+      "false_positives": 5,
+      "true_positives": 478,
+      "true_negatives": 495,
+      "total": 1000,
+      "actual_fraud": 500,
+      "actual_legit": 500
+    },
+    "model_b": {
+      "accuracy": 0.978,
+      "precision": 0.9918,
+      "recall": 0.964,
+      "f1": 0.9777,
+      "roc_auc": 0.9945,
+      "pr_auc": 0.9958,
+      "fpr": 0.008,
+      "false_negatives": 18,
+      "false_positives": 4,
+      "true_positives": 482,
+      "true_negatives": 496,
+      "total": 1000,
+      "actual_fraud": 500,
+      "actual_legit": 500
+    },
+    "conformal_model_a": [
+      {
+        "target_fnr": 0.01,
+        "tau_accept": 0.1332,
+        "tau_review": 0.85,
+        "observed_fnr": 0.02,
+        "selective_fnr": 0.0211,
+        "false_omission_rate": 0.02,
+        "coverage": 0.963,
+        "abstention_rate": 0.037,
+        "auto_accept_count": 499,
+        "auto_reject_count": 464,
+        "human_review_count": 37,
+        "false_negatives": 10,
+        "false_positives": 1,
+        "true_positives": 463,
+        "true_negatives": 489
+      },
+      {
+        "target_fnr": 0.02,
+        "tau_accept": 0.2664,
+        "tau_review": 0.85,
+        "observed_fnr": 0.03,
+        "selective_fnr": 0.0314,
+        "false_omission_rate": 0.0295,
+        "coverage": 0.973,
+        "abstention_rate": 0.027,
+        "auto_accept_count": 509,
+        "auto_reject_count": 464,
+        "human_review_count": 27,
+        "false_negatives": 15,
+        "false_positives": 1,
+        "true_positives": 463,
+        "true_negatives": 494
+      },
+      {
+        "target_fnr": 0.05,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.036,
+        "selective_fnr": 0.0374,
+        "false_omission_rate": 0.0351,
+        "coverage": 0.977,
+        "abstention_rate": 0.023,
+        "auto_accept_count": 513,
+        "auto_reject_count": 464,
+        "human_review_count": 23,
+        "false_negatives": 18,
+        "false_positives": 1,
+        "true_positives": 463,
+        "true_negatives": 495
+      },
+      {
+        "target_fnr": 0.1,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.036,
+        "selective_fnr": 0.0374,
+        "false_omission_rate": 0.0351,
+        "coverage": 0.977,
+        "abstention_rate": 0.023,
+        "auto_accept_count": 513,
+        "auto_reject_count": 464,
+        "human_review_count": 23,
+        "false_negatives": 18,
+        "false_positives": 1,
+        "true_positives": 463,
+        "true_negatives": 495
+      }
+    ],
+    "conformal_model_b": [
+      {
+        "target_fnr": 0.01,
+        "tau_accept": 0.1545,
+        "tau_review": 0.85,
+        "observed_fnr": 0.022,
+        "selective_fnr": 0.0233,
+        "false_omission_rate": 0.022,
+        "coverage": 0.963,
+        "abstention_rate": 0.037,
+        "auto_accept_count": 500,
+        "auto_reject_count": 463,
+        "human_review_count": 37,
+        "false_negatives": 11,
+        "false_positives": 2,
+        "true_positives": 461,
+        "true_negatives": 489
+      },
+      {
+        "target_fnr": 0.02,
+        "tau_accept": 0.309,
+        "tau_review": 0.85,
+        "observed_fnr": 0.03,
+        "selective_fnr": 0.0315,
+        "false_omission_rate": 0.0295,
+        "coverage": 0.972,
+        "abstention_rate": 0.028,
+        "auto_accept_count": 509,
+        "auto_reject_count": 463,
+        "human_review_count": 28,
+        "false_negatives": 15,
+        "false_positives": 2,
+        "true_positives": 461,
+        "true_negatives": 494
+      },
+      {
+        "target_fnr": 0.05,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.032,
+        "selective_fnr": 0.0335,
+        "false_omission_rate": 0.0314,
+        "coverage": 0.973,
+        "abstention_rate": 0.027,
+        "auto_accept_count": 510,
+        "auto_reject_count": 463,
+        "human_review_count": 27,
+        "false_negatives": 16,
+        "false_positives": 2,
+        "true_positives": 461,
+        "true_negatives": 494
+      },
+      {
+        "target_fnr": 0.1,
+        "tau_accept": 0.4,
+        "tau_review": 0.85,
+        "observed_fnr": 0.032,
+        "selective_fnr": 0.0335,
+        "false_omission_rate": 0.0314,
+        "coverage": 0.973,
+        "abstention_rate": 0.027,
+        "auto_accept_count": 510,
+        "auto_reject_count": 463,
+        "human_review_count": 27,
+        "false_negatives": 16,
+        "false_positives": 2,
+        "true_positives": 461,
+        "true_negatives": 494
+      }
+    ]
+  },
+  "distribution_shift_d5": {
+    "model_a": {
+      "accuracy": 0.988,
+      "precision": 0.9423,
+      "recall": 0.98,
+      "f1": 0.9608,
+      "roc_auc": 0.9993,
+      "pr_auc": 0.9962,
+      "fpr": 0.0106,
+      "false_negatives": 3,
+      "false_positives": 9,
+      "true_positives": 147,
+      "true_negatives": 841,
+      "total": 1000,
+      "actual_fraud": 150,
+      "actual_legit": 850
+    },
+    "model_b": {
+      "accuracy": 0.988,
+      "precision": 0.9367,
+      "recall": 0.9867,
+      "f1": 0.961,
+      "roc_auc": 0.9993,
+      "pr_auc": 0.9961,
+      "fpr": 0.0118,
+      "false_negatives": 2,
+      "false_positives": 10,
+      "true_positives": 148,
+      "true_negatives": 840,
+      "total": 1000,
+      "actual_fraud": 150,
+      "actual_legit": 850
+    }
+  },
+  "cross_combination_slices": {
+    "legit_benign": {
+      "sample_count": 876,
+      "actual_fraud": 0,
+      "actual_legit": 876,
+      "model_a": {
+        "accuracy": 0.992,
+        "fpr": 0.008,
+        "fn_count": 0,
+        "fp_count": 7
+      },
+      "model_b": {
+        "accuracy": 0.9932,
+        "fpr": 0.0068,
+        "fn_count": 0,
+        "fp_count": 6
+      }
+    },
+    "legit_suspicious_hard_negative": {
+      "sample_count": 427,
+      "actual_fraud": 0,
+      "actual_legit": 427,
+      "model_a": {
+        "accuracy": 0.9883,
+        "fpr": 0.0117,
+        "fn_count": 0,
+        "fp_count": 5
+      },
+      "model_b": {
+        "accuracy": 0.9859,
+        "fpr": 0.0141,
+        "fn_count": 0,
+        "fp_count": 6
+      }
+    },
+    "legit_poisoned_hard_negative": {
+      "sample_count": 397,
+      "actual_fraud": 0,
+      "actual_legit": 397,
+      "model_a": {
+        "accuracy": 0.9899,
+        "fpr": 0.0101,
+        "fn_count": 0,
+        "fp_count": 4
+      },
+      "model_b": {
+        "accuracy": 0.9899,
+        "fpr": 0.0101,
+        "fn_count": 0,
+        "fp_count": 4
+      }
+    },
+    "fraud_benign_deceptive": {
+      "sample_count": 137,
+      "actual_fraud": 137,
+      "actual_legit": 0,
+      "model_a": {
+        "accuracy": 0.9343,
+        "fpr": 0.0,
+        "fn_count": 9,
+        "fp_count": 0
+      },
+      "model_b": {
+        "accuracy": 0.927,
+        "fpr": 0.0,
+        "fn_count": 10,
+        "fp_count": 0
+      }
+    },
+    "fraud_suspicious": {
+      "sample_count": 75,
+      "actual_fraud": 75,
+      "actual_legit": 0,
+      "model_a": {
+        "accuracy": 0.9467,
+        "fpr": 0.0,
+        "fn_count": 4,
+        "fp_count": 0
+      },
+      "model_b": {
+        "accuracy": 0.9467,
+        "fpr": 0.0,
+        "fn_count": 4,
+        "fp_count": 0
+      }
+    },
+    "fraud_adversarial_poisoned": {
+      "sample_count": 88,
+      "actual_fraud": 88,
+      "actual_legit": 0,
+      "model_a": {
+        "accuracy": 0.9432,
+        "fpr": 0.0,
+        "fn_count": 5,
+        "fp_count": 0
+      },
+      "model_b": {
+        "accuracy": 0.9318,
+        "fpr": 0.0,
+        "fn_count": 6,
+        "fp_count": 0
+      }
+    }
+  },
+  "plots_generated": [
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\provenance_chain_ablation.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\provenance_chain_poisoning.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\provenance_chain_risk_coverage.png"
+  ],
+  "scientific_interpretation": {
+    "in_distribution_effect": "Under label-independent provenance sampling, Model B exhibits performance very close to Model A. The observed difference was small, confirming that on the in-distribution D3 benchmark, adding provenance features did not improve the primary detection metrics.",
+    "poisoning_evaluation": "Under the concentrated poisoning scenario D4, Model B provenance features provided a modest defensive benefit (F1 +0.0052, Recall +0.0080, FN 22 -> 18), capturing prompt injection attempts independent of transaction amounts.",
+    "distribution_shift_evaluation": "Under D5 distribution/domain variation, the effect was mixed and small (Recall +0.0067, FN 3 -> 2, FPR +0.0012). The experiment does not establish a statistically significant difference.",
+    "methodological_validity": "The experiment is now free of synthetic label conditioning: both legitimate and fraud transactions sample from identical mixture topologies.",
+    "security_role": "Provenance is NOT a magic replacement for the transaction detector. It should be treated as an auxiliary security signal / secondary tripwire rather than a unilateral fraud-blocking signal, particularly for agentic-payment interfaces where external context is security-relevant. Because provenance itself can be manipulated or poisoned, it must not be treated as inherently trustworthy."
+  },
+  "conformal_risk_coverage_interpretation": "Coverage increased monotonically as the acceptance threshold was relaxed. Selective error metrics were not strictly monotonic at every threshold, which is expected because their denominators change with the accepted population.",
+  "conformal_guarantee_disclaimer": "Standard split conformal guarantees rely on exchangeability and provide marginal coverage guarantees under those assumptions. The empirical selective-risk/FNR-control procedure evaluated here should therefore be interpreted as an empirical risk-control mechanism under the stated calibration assumptions, not as a universal guarantee under arbitrary distribution shift or adversarial adaptation. Phase C and Phase D distribution-shift experiments intentionally include regimes where exchangeability may not hold; therefore those results are stress-test measurements rather than formal conformal guarantees.",
+  "freeze_disposition": {
+    "phase_d_status": "FROZEN AND COMPLETE",
+    "freeze_note": "Phase D is frozen. The corrected label-independent provenance experiment is the authoritative result. Numerical results, seeds, model configurations, dataset protocol, and evaluation methodology are fixed. Subsequent work must not modify Phase D results. Any future methodological improvement must be implemented as a new Phase E experiment. Phase D results must not be tuned, re-generated, or selectively reported based on Phase E outcomes."
+  },
+  "limitations": [
+    "Standard split conformal guarantees rely on exchangeability and provide marginal coverage guarantees under those assumptions. The empirical selective-risk/FNR-control procedure evaluated here should therefore be interpreted as an empirical risk-control mechanism under the stated calibration assumptions, not as a universal guarantee under arbitrary distribution shift or adversarial adaptation.",
+    "Phase C and Phase D distribution-shift experiments intentionally include regimes where exchangeability may not hold; therefore those results are stress-test measurements rather than formal conformal guarantees.",
+    "Exogenous provenance generation reflects real-world operational environments where external context is observed, not artificially bound to ground-truth labels.",
+    "Observational correlation: Predictive utility reflects feature association, not cryptographic authorization proof.",
+    "Real-world validation requires realistic agent traces, authenticated provenance, and adaptive/adversarial evaluation."
+  ]
+}

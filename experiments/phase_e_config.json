@@ -1,0 +1,85 @@
+{
+  "phase": "E.1",
+  "experiment_name": "Conformal Test-Martingale Drift Detection + Adaptive Recalibration",
+  "version": "1.0.0",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "methodology": {
+    "framework": "Split Conformal Prediction + Sequential Power Test-Martingale",
+    "betting_function": "Power Martingale f(u) = epsilon * u^(epsilon - 1)",
+    "epsilon": 0.8,
+    "drift_significance_level_alpha": 0.01,
+    "alarm_threshold": 100.0,
+    "log_alarm_threshold": 4.605170185988092,
+    "label_delay_batches": 3,
+    "recalibration_window_samples": 500,
+    "target_fnr_nominal": 0.05,
+    "tau_review_default": 0.85,
+    "tau_accept_min": 0.01,
+    "tau_accept_max": 0.40,
+    "calibrator_target_alpha": 0.05
+  },
+  "random_seeds": {
+    "calibration_reference": 5100,
+    "e1_no_drift": 5101,
+    "e2_abrupt_drift": 5102,
+    "e3_gradual_drift": 5103,
+    "e4_adversarial_gen2_drift": 5104
+  },
+  "dataset_parameters": {
+    "calibration_samples": 2000,
+    "calibration_fraud_ratio": 0.05,
+    "stream_batch_count": 20,
+    "stream_batch_size": 100,
+    "stream_total_samples": 2000
+  },
+  "drift_schedules": {
+    "E1_no_drift": {
+      "true_drift_point": null,
+      "schedule": "Batches 1-20: 100% reference (5% fraud)"
+    },
+    "E2_abrupt_drift": {
+      "true_drift_point": 11,
+      "schedule": "Batches 1-10: Reference (5% fraud); Batches 11-20: Shifted (25% fraud, elevated risk scores)"
+    },
+    "E3_gradual_drift": {
+      "true_drift_start": 6,
+      "true_drift_midpoint": 11,
+      "schedule": "Batches 1-5: 100% ref; Batches 6-10: 75% ref + 25% shifted; Batches 11-15: 50% ref + 50% shifted; Batches 16-20: 25% ref + 75% shifted"
+    },
+    "E4_adversarial_gen2_drift": {
+      "true_drift_point": 11,
+      "schedule": "Batches 1-10: Reference; Batches 11-20: Gen-2 evolved/mutated adversarial attacks"
+    }
+  },
+  "systems_under_test": [
+    {
+      "system_id": "System_A",
+      "name": "Static Conformal",
+      "description": "Calibrated once on reference set N=2000; never recalibrates"
+    },
+    {
+      "system_id": "System_B",
+      "name": "Oracle Adaptive",
+      "description": "Recalibrates at predetermined drift point using most recent 500 eligible delayed labels"
+    },
+    {
+      "system_id": "System_C",
+      "name": "Drift-Aware Adaptive",
+      "description": "Sequential conformal test-martingale detection; recalibrates upon alarm using delayed labels"
+    }
+  ],
+  "metrics": [
+    "observed_fnr",
+    "selective_fnr",
+    "false_omission_rate",
+    "coverage",
+    "abstention_rate",
+    "precision",
+    "recall",
+    "f1",
+    "false_positive_rate",
+    "detection_delay_batches",
+    "false_alarm_count",
+    "recalibration_count"
+  ]
+}

@@ -1,0 +1,9 @@
+slice,slice_type,sample_count,model_a_fpr,model_b_fpr,delta_fpr,model_a_fp_count,model_b_fp_count,model_a_mean_prob,model_b_mean_prob,model_a_recall,model_b_recall,delta_recall,model_a_fn_count,model_b_fn_count
+1_legit_benign,legitimate,88,0.0,0.0,0.0,0.0,0.0,0.0042,0.0059,,,,,
+2_legit_suspicious_or_poisoned_hard_negative,legitimate,412,0.0121,0.0097,-0.0024,5.0,4.0,0.0159,0.0158,,,,,
+2a_legit_suspicious,legitimate,148,0.0203,0.0203,0.0,3.0,3.0,0.0235,0.0246,,,,,
+2b_legit_poisoned,legitimate,264,0.0076,0.0038,-0.0038,2.0,1.0,0.0116,0.0108,,,,,
+3_fraud_benign_deceptive,fraud,110,,,,,,0.9421,0.947,0.9545,0.9636,0.0091,5.0,4.0
+4_fraud_suspicious_or_poisoned,fraud,390,,,,,,0.9458,0.9443,0.9564,0.9641,0.0077,17.0,14.0
+4a_fraud_suspicious,fraud,132,,,,,,0.944,0.9387,0.9545,0.9545,0.0,6.0,6.0
+4b_fraud_poisoned,fraud,258,,,,,,0.9468,0.9472,0.9574,0.969,0.0116,11.0,8.0

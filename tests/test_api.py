@@ -235,3 +235,28 @@ def test_evaluate_transaction_risk_engine(client):
     assert data_b["risk_level"] == "LOW"
     assert data_b["action"] == "ALLOW"
     assert data_b["mitigation"]["status"] == "APPROVED"
+
+
+def test_provenance_endpoints(client):
+    """Verify GET /api/v1/provenance/metrics and POST /api/v1/provenance/extract-features."""
+    res_metrics = client.get("/api/v1/provenance/metrics")
+    assert res_metrics.status_code == 200
+    data_m = res_metrics.json()
+    assert "experiment_name" in data_m
+    assert "model_a_results_d3" in data_m
+    assert "model_b_results_d3" in data_m
+
+    res_extract = client.post("/api/v1/provenance/extract-features", json={
+        "provenance_chain": [
+            "https://store.merchanta.com/product/123",
+            "https://malicious-context.top/prompt?override=true",
+        ],
+        "primary_merchant_domain": "merchanta.com",
+    })
+    assert res_extract.status_code == 200
+    data_e = res_extract.json()
+    assert "features" in data_e
+    assert data_e["feature_count"] == 10
+    assert data_e["features"]["instruction_source_present"] == 1.0
+    assert data_e["features"]["suspicious_source_indicator"] == 1.0
+

@@ -1,0 +1,1568 @@
+{
+  "experiment_name": "Phase E.2: Provenance Chain Security Signal & Evaluation",
+  "phase": "E.2",
+  "version": "1.0.0",
+  "timestamp": "2026-09-25 18:57:21 UTC",
+  "status": "FROZEN",
+  "research_questions": {
+    "RQ1_primary": "Does provenance provide measurable additional signal, persisting when suspicious or shifted?",
+    "RQ2_poisoning": "Is provenance useful when attackers manipulate/poison provenance?",
+    "RQ3_abstention": "Does provenance assist selective routing to human review?",
+    "RQ4_distribution_shift": "Does provenance utility persist under provenance mixture shift?"
+  },
+  "dataset_summary": {
+    "E2-A": {
+      "total_samples": 3000,
+      "fraud_samples": 450,
+      "legitimate_samples": 2550,
+      "fraud_prevalence": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "target_percentages": {
+        "benign": 50.0,
+        "suspicious": 25.0,
+        "poisoned": 25.0
+      },
+      "realized_sample_counts": {
+        "benign": 1500,
+        "suspicious": 721,
+        "poisoned": 779
+      },
+      "realized_percentages": {
+        "benign": 50.0,
+        "suspicious": 24.03,
+        "poisoned": 25.97
+      },
+      "provenance_mixture": {
+        "benign": 1500,
+        "suspicious": 721,
+        "poisoned": 779
+      }
+    },
+    "E2-B": {
+      "total_samples": 1000,
+      "fraud_samples": 150,
+      "legitimate_samples": 850,
+      "fraud_prevalence": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "target_percentages": {
+        "benign": 50.0,
+        "suspicious": 25.0,
+        "poisoned": 25.0
+      },
+      "realized_sample_counts": {
+        "benign": 506,
+        "suspicious": 248,
+        "poisoned": 246
+      },
+      "realized_percentages": {
+        "benign": 50.6,
+        "suspicious": 24.8,
+        "poisoned": 24.6
+      },
+      "provenance_mixture": {
+        "benign": 506,
+        "suspicious": 248,
+        "poisoned": 246
+      },
+      "sub_splits": {
+        "E2-B_cal": {
+          "role": "Conformal Calibration threshold estimation only",
+          "indices": "0..499",
+          "sample_count": 500,
+          "fraud_samples": 86,
+          "fraud_prevalence": 0.172,
+          "target_mixture": {
+            "benign": 0.5,
+            "suspicious": 0.25,
+            "poisoned": 0.25
+          },
+          "realized_sample_counts": {
+            "benign": 259,
+            "suspicious": 118,
+            "poisoned": 123
+          },
+          "realized_percentages": {
+            "benign": 51.8,
+            "suspicious": 23.6,
+            "poisoned": 24.6
+          }
+        },
+        "E2-B_eval": {
+          "role": "Independent In-Distribution Conformal Evaluation & Risk-Coverage curve",
+          "indices": "500..999",
+          "sample_count": 500,
+          "fraud_samples": 64,
+          "fraud_prevalence": 0.128,
+          "target_mixture": {
+            "benign": 0.5,
+            "suspicious": 0.25,
+            "poisoned": 0.25
+          },
+          "realized_sample_counts": {
+            "benign": 247,
+            "suspicious": 130,
+            "poisoned": 123
+          },
+          "realized_percentages": {
+            "benign": 49.4,
+            "suspicious": 26.0,
+            "poisoned": 24.6
+          }
+        }
+      }
+    },
+    "E2-C": {
+      "total_samples": 2000,
+      "fraud_samples": 300,
+      "legitimate_samples": 1700,
+      "fraud_prevalence": 0.15,
+      "target_mixture": {
+        "benign": 0.3,
+        "suspicious": 0.35,
+        "poisoned": 0.35
+      },
+      "target_percentages": {
+        "benign": 30.0,
+        "suspicious": 35.0,
+        "poisoned": 35.0
+      },
+      "realized_sample_counts": {
+        "benign": 629,
+        "suspicious": 674,
+        "poisoned": 697
+      },
+      "realized_percentages": {
+        "benign": 31.45,
+        "suspicious": 33.7,
+        "poisoned": 34.85
+      },
+      "provenance_mixture": {
+        "benign": 629,
+        "suspicious": 674,
+        "poisoned": 697
+      }
+    },
+    "E2-D": {
+      "total_samples": 1000,
+      "fraud_samples": 500,
+      "legitimate_samples": 500,
+      "fraud_prevalence": 0.5,
+      "target_mixture": {
+        "benign": 0.2,
+        "suspicious": 0.3,
+        "poisoned": 0.5
+      },
+      "target_percentages": {
+        "benign": 20.0,
+        "suspicious": 30.0,
+        "poisoned": 50.0
+      },
+      "realized_sample_counts": {
+        "benign": 198,
+        "suspicious": 280,
+        "poisoned": 522
+      },
+      "realized_percentages": {
+        "benign": 19.8,
+        "suspicious": 28.0,
+        "poisoned": 52.2
+      },
+      "provenance_mixture": {
+        "benign": 198,
+        "suspicious": 280,
+        "poisoned": 522
+      }
+    },
+    "E2-E": {
+      "total_samples": 1000,
+      "fraud_samples": 150,
+      "legitimate_samples": 850,
+      "fraud_prevalence": 0.15,
+      "target_mixture": {
+        "benign": 0.5,
+        "suspicious": 0.25,
+        "poisoned": 0.25
+      },
+      "target_percentages": {
+        "benign": 50.0,
+        "suspicious": 25.0,
+        "poisoned": 25.0
+      },
+      "realized_sample_counts": {
+        "benign": 476,
+        "suspicious": 259,
+        "poisoned": 265
+      },
+      "realized_percentages": {
+        "benign": 47.6,
+        "suspicious": 25.9,
+        "poisoned": 26.5
+      },
+      "provenance_mixture": {
+        "benign": 476,
+        "suspicious": 259,
+        "poisoned": 265
+      }
+    }
+  },
+  "primary_results": {
+    "E2-B_InDistribution": {
+      "model_a_tx_only": {
+        "accuracy": 0.986,
+        "accuracy_ci": [
+          0.9766,
+          0.9916
+        ],
+        "precision": 0.9595,
+        "precision_ci": [
+          0.9144,
+          0.9813
+        ],
+        "recall": 0.9467,
+        "recall_ci": [
+          0.8983,
+          0.9727
+        ],
+        "f1": 0.953,
+        "roc_auc": 0.9952,
+        "pr_auc": 0.9871,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.0533,
+        "fnr_ci": [
+          0.0273,
+          0.1017
+        ],
+        "false_negatives": 8,
+        "false_positives": 6,
+        "true_positives": 142,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "model_b_tx_prov": {
+        "accuracy": 0.986,
+        "accuracy_ci": [
+          0.9766,
+          0.9916
+        ],
+        "precision": 0.9595,
+        "precision_ci": [
+          0.9144,
+          0.9813
+        ],
+        "recall": 0.9467,
+        "recall_ci": [
+          0.8983,
+          0.9727
+        ],
+        "f1": 0.953,
+        "roc_auc": 0.9956,
+        "pr_auc": 0.9865,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.0533,
+        "fnr_ci": [
+          0.0273,
+          0.1017
+        ],
+        "false_negatives": 8,
+        "false_positives": 6,
+        "true_positives": 142,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "delta": {
+        "delta_f1": 0.0,
+        "delta_recall": 0.0,
+        "delta_fpr": 0.0,
+        "delta_roc_auc": 0.0004,
+        "delta_pr_auc": -0.0006
+      },
+      "mcnemar_paired_test": {
+        "mcnemar_statistic": 0.0,
+        "p_value": 1.0,
+        "statistically_significant_05": false,
+        "statistically_significant_01": false,
+        "table": {
+          "both_correct": 986,
+          "model_a_only": 0,
+          "model_b_only": 0,
+          "both_incorrect": 14
+        },
+        "discordant_pairs": 0
+      },
+      "four_way_slices": {
+        "1_legit_benign": {
+          "slice_type": "legitimate",
+          "sample_count": 417,
+          "model_a_fpr": 0.0096,
+          "model_b_fpr": 0.0096,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 4,
+          "model_b_fp_count": 4,
+          "model_a_mean_prob": 0.0145,
+          "model_b_mean_prob": 0.0156
+        },
+        "2_legit_suspicious_or_poisoned_hard_negative": {
+          "slice_type": "legitimate",
+          "sample_count": 433,
+          "model_a_fpr": 0.0046,
+          "model_b_fpr": 0.0046,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 2,
+          "model_b_fp_count": 2,
+          "model_a_mean_prob": 0.0117,
+          "model_b_mean_prob": 0.0118
+        },
+        "2a_legit_suspicious": {
+          "slice_type": "legitimate",
+          "sample_count": 215,
+          "model_a_fpr": 0.0047,
+          "model_b_fpr": 0.0047,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 1,
+          "model_b_fp_count": 1,
+          "model_a_mean_prob": 0.0137,
+          "model_b_mean_prob": 0.0136
+        },
+        "2b_legit_poisoned": {
+          "slice_type": "legitimate",
+          "sample_count": 218,
+          "model_a_fpr": 0.0046,
+          "model_b_fpr": 0.0046,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 1,
+          "model_b_fp_count": 1,
+          "model_a_mean_prob": 0.0097,
+          "model_b_mean_prob": 0.01
+        },
+        "3_fraud_benign_deceptive": {
+          "slice_type": "fraud",
+          "sample_count": 89,
+          "model_a_recall": 0.9551,
+          "model_b_recall": 0.9551,
+          "delta_recall": 0.0,
+          "model_a_fn_count": 4,
+          "model_b_fn_count": 4,
+          "model_a_mean_prob": 0.9441,
+          "model_b_mean_prob": 0.9453
+        },
+        "4_fraud_suspicious_or_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 61,
+          "model_a_recall": 0.9344,
+          "model_b_recall": 0.9344,
+          "delta_recall": 0.0,
+          "model_a_fn_count": 4,
+          "model_b_fn_count": 4,
+          "model_a_mean_prob": 0.9223,
+          "model_b_mean_prob": 0.9213
+        },
+        "4a_fraud_suspicious": {
+          "slice_type": "fraud",
+          "sample_count": 33,
+          "model_a_recall": 0.9091,
+          "model_b_recall": 0.9091,
+          "delta_recall": 0.0,
+          "model_a_fn_count": 3,
+          "model_b_fn_count": 3,
+          "model_a_mean_prob": 0.9091,
+          "model_b_mean_prob": 0.8989
+        },
+        "4b_fraud_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 28,
+          "model_a_recall": 0.9643,
+          "model_b_recall": 0.9643,
+          "delta_recall": 0.0,
+          "model_a_fn_count": 1,
+          "model_b_fn_count": 1,
+          "model_a_mean_prob": 0.9377,
+          "model_b_mean_prob": 0.9476
+        }
+      },
+      "conformal_selective_eval": {
+        "model_a": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1458,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0156,
+            "selective_fnr": 0.0167,
+            "false_omission_rate": 0.0023,
+            "for_ci_95": [
+              0.0004,
+              0.0131
+            ],
+            "coverage": 0.972,
+            "abstention_rate": 0.028,
+            "auto_accept_count": 427,
+            "auto_reject_count": 59,
+            "human_review_count": 14,
+            "false_negatives": 1,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 426
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.2917,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0312,
+            "selective_fnr": 0.0328,
+            "false_omission_rate": 0.0046,
+            "for_ci_95": [
+              0.0013,
+              0.0166
+            ],
+            "coverage": 0.988,
+            "abstention_rate": 0.012,
+            "auto_accept_count": 435,
+            "auto_reject_count": 59,
+            "human_review_count": 6,
+            "false_negatives": 2,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 433
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0469,
+            "selective_fnr": 0.0484,
+            "false_omission_rate": 0.0069,
+            "for_ci_95": [
+              0.0023,
+              0.02
+            ],
+            "coverage": 0.99,
+            "abstention_rate": 0.01,
+            "auto_accept_count": 436,
+            "auto_reject_count": 59,
+            "human_review_count": 5,
+            "false_negatives": 3,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 433
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0469,
+            "selective_fnr": 0.0484,
+            "false_omission_rate": 0.0069,
+            "for_ci_95": [
+              0.0023,
+              0.02
+            ],
+            "coverage": 0.99,
+            "abstention_rate": 0.01,
+            "auto_accept_count": 436,
+            "auto_reject_count": 59,
+            "human_review_count": 5,
+            "false_negatives": 3,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 433
+          }
+        ],
+        "model_b": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1546,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0312,
+            "selective_fnr": 0.0328,
+            "false_omission_rate": 0.0046,
+            "for_ci_95": [
+              0.0013,
+              0.0168
+            ],
+            "coverage": 0.98,
+            "abstention_rate": 0.02,
+            "auto_accept_count": 431,
+            "auto_reject_count": 59,
+            "human_review_count": 10,
+            "false_negatives": 2,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 429
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.3092,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0469,
+            "selective_fnr": 0.0484,
+            "false_omission_rate": 0.0069,
+            "for_ci_95": [
+              0.0024,
+              0.0201
+            ],
+            "coverage": 0.986,
+            "abstention_rate": 0.014,
+            "auto_accept_count": 434,
+            "auto_reject_count": 59,
+            "human_review_count": 7,
+            "false_negatives": 3,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 431
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0469,
+            "selective_fnr": 0.0484,
+            "false_omission_rate": 0.0069,
+            "for_ci_95": [
+              0.0023,
+              0.0201
+            ],
+            "coverage": 0.988,
+            "abstention_rate": 0.012,
+            "auto_accept_count": 435,
+            "auto_reject_count": 59,
+            "human_review_count": 6,
+            "false_negatives": 3,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 432
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0469,
+            "selective_fnr": 0.0484,
+            "false_omission_rate": 0.0069,
+            "for_ci_95": [
+              0.0023,
+              0.0201
+            ],
+            "coverage": 0.988,
+            "abstention_rate": 0.012,
+            "auto_accept_count": 435,
+            "auto_reject_count": 59,
+            "human_review_count": 6,
+            "false_negatives": 3,
+            "false_positives": 0,
+            "true_positives": 59,
+            "true_negatives": 432
+          }
+        ],
+        "calibration_partition": "E2-B_cal (first 500 samples, indices 0..499)",
+        "evaluation_partition": "E2-B_eval (last 500 samples, indices 500..999)",
+        "disjoint_separation_verified": true
+      }
+    },
+    "E2-C_DistributionShift": {
+      "model_a_tx_only": {
+        "accuracy": 0.983,
+        "accuracy_ci": [
+          0.9763,
+          0.9878
+        ],
+        "precision": 0.9463,
+        "precision_ci": [
+          0.9146,
+          0.9667
+        ],
+        "recall": 0.94,
+        "recall_ci": [
+          0.9072,
+          0.9617
+        ],
+        "f1": 0.9431,
+        "roc_auc": 0.9965,
+        "pr_auc": 0.9848,
+        "fpr": 0.0094,
+        "fpr_ci": [
+          0.0058,
+          0.0152
+        ],
+        "fnr": 0.06,
+        "fnr_ci": [
+          0.0383,
+          0.0928
+        ],
+        "false_negatives": 18,
+        "false_positives": 16,
+        "true_positives": 282,
+        "true_negatives": 1684,
+        "total": 2000,
+        "actual_fraud": 300,
+        "actual_legit": 1700
+      },
+      "model_b_tx_prov": {
+        "accuracy": 0.981,
+        "accuracy_ci": [
+          0.974,
+          0.9861
+        ],
+        "precision": 0.9456,
+        "precision_ci": [
+          0.9134,
+          0.9662
+        ],
+        "recall": 0.9267,
+        "recall_ci": [
+          0.8915,
+          0.9511
+        ],
+        "f1": 0.936,
+        "roc_auc": 0.9959,
+        "pr_auc": 0.9844,
+        "fpr": 0.0094,
+        "fpr_ci": [
+          0.0058,
+          0.0152
+        ],
+        "fnr": 0.0733,
+        "fnr_ci": [
+          0.0489,
+          0.1085
+        ],
+        "false_negatives": 22,
+        "false_positives": 16,
+        "true_positives": 278,
+        "true_negatives": 1684,
+        "total": 2000,
+        "actual_fraud": 300,
+        "actual_legit": 1700
+      },
+      "delta": {
+        "delta_f1": -0.0071,
+        "delta_recall": -0.0133,
+        "delta_fpr": 0.0,
+        "delta_roc_auc": -0.0006
+      },
+      "mcnemar_paired_test": {
+        "mcnemar_statistic": 1.5,
+        "p_value": 0.220671,
+        "statistically_significant_05": false,
+        "statistically_significant_01": false,
+        "table": {
+          "both_correct": 1961,
+          "model_a_only": 5,
+          "model_b_only": 1,
+          "both_incorrect": 33
+        },
+        "discordant_pairs": 6
+      },
+      "four_way_slices": {
+        "1_legit_benign": {
+          "slice_type": "legitimate",
+          "sample_count": 549,
+          "model_a_fpr": 0.0091,
+          "model_b_fpr": 0.0091,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 5,
+          "model_b_fp_count": 5,
+          "model_a_mean_prob": 0.0135,
+          "model_b_mean_prob": 0.0141
+        },
+        "2_legit_suspicious_or_poisoned_hard_negative": {
+          "slice_type": "legitimate",
+          "sample_count": 1151,
+          "model_a_fpr": 0.0096,
+          "model_b_fpr": 0.0096,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 11,
+          "model_b_fp_count": 11,
+          "model_a_mean_prob": 0.0162,
+          "model_b_mean_prob": 0.0162
+        },
+        "2a_legit_suspicious": {
+          "slice_type": "legitimate",
+          "sample_count": 573,
+          "model_a_fpr": 0.007,
+          "model_b_fpr": 0.0052,
+          "delta_fpr": -0.0017,
+          "model_a_fp_count": 4,
+          "model_b_fp_count": 3,
+          "model_a_mean_prob": 0.015,
+          "model_b_mean_prob": 0.0146
+        },
+        "2b_legit_poisoned": {
+          "slice_type": "legitimate",
+          "sample_count": 578,
+          "model_a_fpr": 0.0121,
+          "model_b_fpr": 0.0138,
+          "delta_fpr": 0.0017,
+          "model_a_fp_count": 7,
+          "model_b_fp_count": 8,
+          "model_a_mean_prob": 0.0174,
+          "model_b_mean_prob": 0.0178
+        },
+        "3_fraud_benign_deceptive": {
+          "slice_type": "fraud",
+          "sample_count": 80,
+          "model_a_recall": 0.9375,
+          "model_b_recall": 0.925,
+          "delta_recall": -0.0125,
+          "model_a_fn_count": 5,
+          "model_b_fn_count": 6,
+          "model_a_mean_prob": 0.9185,
+          "model_b_mean_prob": 0.9203
+        },
+        "4_fraud_suspicious_or_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 220,
+          "model_a_recall": 0.9409,
+          "model_b_recall": 0.9273,
+          "delta_recall": -0.0136,
+          "model_a_fn_count": 13,
+          "model_b_fn_count": 16,
+          "model_a_mean_prob": 0.9203,
+          "model_b_mean_prob": 0.9142
+        },
+        "4a_fraud_suspicious": {
+          "slice_type": "fraud",
+          "sample_count": 101,
+          "model_a_recall": 0.9406,
+          "model_b_recall": 0.9307,
+          "delta_recall": -0.0099,
+          "model_a_fn_count": 6,
+          "model_b_fn_count": 7,
+          "model_a_mean_prob": 0.9183,
+          "model_b_mean_prob": 0.9094
+        },
+        "4b_fraud_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 119,
+          "model_a_recall": 0.9412,
+          "model_b_recall": 0.9244,
+          "delta_recall": -0.0168,
+          "model_a_fn_count": 7,
+          "model_b_fn_count": 9,
+          "model_a_mean_prob": 0.922,
+          "model_b_mean_prob": 0.9182
+        }
+      },
+      "conformal_selective_eval": {
+        "model_a": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1458,
+            "tau_review": 0.85,
+            "observed_fnr": 0.05,
+            "selective_fnr": 0.0538,
+            "false_omission_rate": 0.009,
+            "for_ci_95": [
+              0.0054,
+              0.0147
+            ],
+            "coverage": 0.971,
+            "abstention_rate": 0.029,
+            "auto_accept_count": 1673,
+            "auto_reject_count": 269,
+            "human_review_count": 58,
+            "false_negatives": 15,
+            "false_positives": 5,
+            "true_positives": 264,
+            "true_negatives": 1658
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.2917,
+            "tau_review": 0.85,
+            "observed_fnr": 0.06,
+            "selective_fnr": 0.0638,
+            "false_omission_rate": 0.0106,
+            "for_ci_95": [
+              0.0067,
+              0.0168
+            ],
+            "coverage": 0.98,
+            "abstention_rate": 0.02,
+            "auto_accept_count": 1691,
+            "auto_reject_count": 269,
+            "human_review_count": 40,
+            "false_negatives": 18,
+            "false_positives": 5,
+            "true_positives": 264,
+            "true_negatives": 1673
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.06,
+            "selective_fnr": 0.0638,
+            "false_omission_rate": 0.0106,
+            "for_ci_95": [
+              0.0067,
+              0.0167
+            ],
+            "coverage": 0.983,
+            "abstention_rate": 0.017,
+            "auto_accept_count": 1697,
+            "auto_reject_count": 269,
+            "human_review_count": 34,
+            "false_negatives": 18,
+            "false_positives": 5,
+            "true_positives": 264,
+            "true_negatives": 1679
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.06,
+            "selective_fnr": 0.0638,
+            "false_omission_rate": 0.0106,
+            "for_ci_95": [
+              0.0067,
+              0.0167
+            ],
+            "coverage": 0.983,
+            "abstention_rate": 0.017,
+            "auto_accept_count": 1697,
+            "auto_reject_count": 269,
+            "human_review_count": 34,
+            "false_negatives": 18,
+            "false_positives": 5,
+            "true_positives": 264,
+            "true_negatives": 1679
+          }
+        ],
+        "model_b": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1546,
+            "tau_review": 0.85,
+            "observed_fnr": 0.05,
+            "selective_fnr": 0.0542,
+            "false_omission_rate": 0.009,
+            "for_ci_95": [
+              0.0054,
+              0.0147
+            ],
+            "coverage": 0.9705,
+            "abstention_rate": 0.0295,
+            "auto_accept_count": 1674,
+            "auto_reject_count": 267,
+            "human_review_count": 59,
+            "false_negatives": 15,
+            "false_positives": 5,
+            "true_positives": 262,
+            "true_negatives": 1659
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.3092,
+            "tau_review": 0.85,
+            "observed_fnr": 0.06,
+            "selective_fnr": 0.0643,
+            "false_omission_rate": 0.0106,
+            "for_ci_95": [
+              0.0067,
+              0.0167
+            ],
+            "coverage": 0.9815,
+            "abstention_rate": 0.0185,
+            "auto_accept_count": 1696,
+            "auto_reject_count": 267,
+            "human_review_count": 37,
+            "false_negatives": 18,
+            "false_positives": 5,
+            "true_positives": 262,
+            "true_negatives": 1678
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0633,
+            "selective_fnr": 0.0676,
+            "false_omission_rate": 0.0112,
+            "for_ci_95": [
+              0.0072,
+              0.0174
+            ],
+            "coverage": 0.984,
+            "abstention_rate": 0.016,
+            "auto_accept_count": 1701,
+            "auto_reject_count": 267,
+            "human_review_count": 32,
+            "false_negatives": 19,
+            "false_positives": 5,
+            "true_positives": 262,
+            "true_negatives": 1682
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.0633,
+            "selective_fnr": 0.0676,
+            "false_omission_rate": 0.0112,
+            "for_ci_95": [
+              0.0072,
+              0.0174
+            ],
+            "coverage": 0.984,
+            "abstention_rate": 0.016,
+            "auto_accept_count": 1701,
+            "auto_reject_count": 267,
+            "human_review_count": 32,
+            "false_negatives": 19,
+            "false_positives": 5,
+            "true_positives": 262,
+            "true_negatives": 1682
+          }
+        ]
+      }
+    },
+    "E2-D_PoisoningStress": {
+      "model_a_tx_only": {
+        "accuracy": 0.973,
+        "accuracy_ci": [
+          0.961,
+          0.9814
+        ],
+        "precision": 0.9896,
+        "precision_ci": [
+          0.976,
+          0.9956
+        ],
+        "recall": 0.956,
+        "recall_ci": [
+          0.9343,
+          0.9708
+        ],
+        "f1": 0.9725,
+        "roc_auc": 0.9947,
+        "pr_auc": 0.9959,
+        "fpr": 0.01,
+        "fpr_ci": [
+          0.0043,
+          0.0232
+        ],
+        "fnr": 0.044,
+        "fnr_ci": [
+          0.0292,
+          0.0657
+        ],
+        "false_negatives": 22,
+        "false_positives": 5,
+        "true_positives": 478,
+        "true_negatives": 495,
+        "total": 1000,
+        "actual_fraud": 500,
+        "actual_legit": 500
+      },
+      "model_b_tx_prov": {
+        "accuracy": 0.978,
+        "accuracy_ci": [
+          0.9669,
+          0.9854
+        ],
+        "precision": 0.9918,
+        "precision_ci": [
+          0.979,
+          0.9968
+        ],
+        "recall": 0.964,
+        "recall_ci": [
+          0.9438,
+          0.9771
+        ],
+        "f1": 0.9777,
+        "roc_auc": 0.9945,
+        "pr_auc": 0.9958,
+        "fpr": 0.008,
+        "fpr_ci": [
+          0.0031,
+          0.0204
+        ],
+        "fnr": 0.036,
+        "fnr_ci": [
+          0.0229,
+          0.0562
+        ],
+        "false_negatives": 18,
+        "false_positives": 4,
+        "true_positives": 482,
+        "true_negatives": 496,
+        "total": 1000,
+        "actual_fraud": 500,
+        "actual_legit": 500
+      },
+      "delta": {
+        "delta_f1": 0.0052,
+        "delta_recall": 0.008,
+        "delta_fpr": -0.002
+      },
+      "mcnemar_paired_test": {
+        "mcnemar_statistic": 2.2857,
+        "p_value": 0.13057,
+        "statistically_significant_05": false,
+        "statistically_significant_01": false,
+        "table": {
+          "both_correct": 972,
+          "model_a_only": 1,
+          "model_b_only": 6,
+          "both_incorrect": 21
+        },
+        "discordant_pairs": 7
+      },
+      "four_way_slices": {
+        "1_legit_benign": {
+          "slice_type": "legitimate",
+          "sample_count": 88,
+          "model_a_fpr": 0.0,
+          "model_b_fpr": 0.0,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 0,
+          "model_b_fp_count": 0,
+          "model_a_mean_prob": 0.0042,
+          "model_b_mean_prob": 0.0059
+        },
+        "2_legit_suspicious_or_poisoned_hard_negative": {
+          "slice_type": "legitimate",
+          "sample_count": 412,
+          "model_a_fpr": 0.0121,
+          "model_b_fpr": 0.0097,
+          "delta_fpr": -0.0024,
+          "model_a_fp_count": 5,
+          "model_b_fp_count": 4,
+          "model_a_mean_prob": 0.0159,
+          "model_b_mean_prob": 0.0158
+        },
+        "2a_legit_suspicious": {
+          "slice_type": "legitimate",
+          "sample_count": 148,
+          "model_a_fpr": 0.0203,
+          "model_b_fpr": 0.0203,
+          "delta_fpr": 0.0,
+          "model_a_fp_count": 3,
+          "model_b_fp_count": 3,
+          "model_a_mean_prob": 0.0235,
+          "model_b_mean_prob": 0.0246
+        },
+        "2b_legit_poisoned": {
+          "slice_type": "legitimate",
+          "sample_count": 264,
+          "model_a_fpr": 0.0076,
+          "model_b_fpr": 0.0038,
+          "delta_fpr": -0.0038,
+          "model_a_fp_count": 2,
+          "model_b_fp_count": 1,
+          "model_a_mean_prob": 0.0116,
+          "model_b_mean_prob": 0.0108
+        },
+        "3_fraud_benign_deceptive": {
+          "slice_type": "fraud",
+          "sample_count": 110,
+          "model_a_recall": 0.9545,
+          "model_b_recall": 0.9636,
+          "delta_recall": 0.0091,
+          "model_a_fn_count": 5,
+          "model_b_fn_count": 4,
+          "model_a_mean_prob": 0.9421,
+          "model_b_mean_prob": 0.947
+        },
+        "4_fraud_suspicious_or_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 390,
+          "model_a_recall": 0.9564,
+          "model_b_recall": 0.9641,
+          "delta_recall": 0.0077,
+          "model_a_fn_count": 17,
+          "model_b_fn_count": 14,
+          "model_a_mean_prob": 0.9458,
+          "model_b_mean_prob": 0.9443
+        },
+        "4a_fraud_suspicious": {
+          "slice_type": "fraud",
+          "sample_count": 132,
+          "model_a_recall": 0.9545,
+          "model_b_recall": 0.9545,
+          "delta_recall": 0.0,
+          "model_a_fn_count": 6,
+          "model_b_fn_count": 6,
+          "model_a_mean_prob": 0.944,
+          "model_b_mean_prob": 0.9387
+        },
+        "4b_fraud_poisoned": {
+          "slice_type": "fraud",
+          "sample_count": 258,
+          "model_a_recall": 0.9574,
+          "model_b_recall": 0.969,
+          "delta_recall": 0.0116,
+          "model_a_fn_count": 11,
+          "model_b_fn_count": 8,
+          "model_a_mean_prob": 0.9468,
+          "model_b_mean_prob": 0.9472
+        }
+      },
+      "conformal_selective_eval": {
+        "model_a": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1458,
+            "tau_review": 0.85,
+            "observed_fnr": 0.022,
+            "selective_fnr": 0.0232,
+            "false_omission_rate": 0.022,
+            "for_ci_95": [
+              0.0123,
+              0.0389
+            ],
+            "coverage": 0.965,
+            "abstention_rate": 0.035,
+            "auto_accept_count": 501,
+            "auto_reject_count": 464,
+            "human_review_count": 35,
+            "false_negatives": 11,
+            "false_positives": 1,
+            "true_positives": 463,
+            "true_negatives": 490
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.2917,
+            "tau_review": 0.85,
+            "observed_fnr": 0.03,
+            "selective_fnr": 0.0314,
+            "false_omission_rate": 0.0295,
+            "for_ci_95": [
+              0.0179,
+              0.048
+            ],
+            "coverage": 0.973,
+            "abstention_rate": 0.027,
+            "auto_accept_count": 509,
+            "auto_reject_count": 464,
+            "human_review_count": 27,
+            "false_negatives": 15,
+            "false_positives": 1,
+            "true_positives": 463,
+            "true_negatives": 494
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.036,
+            "selective_fnr": 0.0374,
+            "false_omission_rate": 0.0351,
+            "for_ci_95": [
+              0.0223,
+              0.0548
+            ],
+            "coverage": 0.977,
+            "abstention_rate": 0.023,
+            "auto_accept_count": 513,
+            "auto_reject_count": 464,
+            "human_review_count": 23,
+            "false_negatives": 18,
+            "false_positives": 1,
+            "true_positives": 463,
+            "true_negatives": 495
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.036,
+            "selective_fnr": 0.0374,
+            "false_omission_rate": 0.0351,
+            "for_ci_95": [
+              0.0223,
+              0.0548
+            ],
+            "coverage": 0.977,
+            "abstention_rate": 0.023,
+            "auto_accept_count": 513,
+            "auto_reject_count": 464,
+            "human_review_count": 23,
+            "false_negatives": 18,
+            "false_positives": 1,
+            "true_positives": 463,
+            "true_negatives": 495
+          }
+        ],
+        "model_b": [
+          {
+            "target_fnr": 0.01,
+            "tau_accept": 0.1546,
+            "tau_review": 0.85,
+            "observed_fnr": 0.022,
+            "selective_fnr": 0.0233,
+            "false_omission_rate": 0.022,
+            "for_ci_95": [
+              0.0123,
+              0.039
+            ],
+            "coverage": 0.963,
+            "abstention_rate": 0.037,
+            "auto_accept_count": 500,
+            "auto_reject_count": 463,
+            "human_review_count": 37,
+            "false_negatives": 11,
+            "false_positives": 2,
+            "true_positives": 461,
+            "true_negatives": 489
+          },
+          {
+            "target_fnr": 0.02,
+            "tau_accept": 0.3092,
+            "tau_review": 0.85,
+            "observed_fnr": 0.03,
+            "selective_fnr": 0.0315,
+            "false_omission_rate": 0.0295,
+            "for_ci_95": [
+              0.0179,
+              0.048
+            ],
+            "coverage": 0.972,
+            "abstention_rate": 0.028,
+            "auto_accept_count": 509,
+            "auto_reject_count": 463,
+            "human_review_count": 28,
+            "false_negatives": 15,
+            "false_positives": 2,
+            "true_positives": 461,
+            "true_negatives": 494
+          },
+          {
+            "target_fnr": 0.05,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.032,
+            "selective_fnr": 0.0335,
+            "false_omission_rate": 0.0314,
+            "for_ci_95": [
+              0.0194,
+              0.0504
+            ],
+            "coverage": 0.973,
+            "abstention_rate": 0.027,
+            "auto_accept_count": 510,
+            "auto_reject_count": 463,
+            "human_review_count": 27,
+            "false_negatives": 16,
+            "false_positives": 2,
+            "true_positives": 461,
+            "true_negatives": 494
+          },
+          {
+            "target_fnr": 0.1,
+            "tau_accept": 0.4,
+            "tau_review": 0.85,
+            "observed_fnr": 0.032,
+            "selective_fnr": 0.0335,
+            "false_omission_rate": 0.0314,
+            "for_ci_95": [
+              0.0194,
+              0.0504
+            ],
+            "coverage": 0.973,
+            "abstention_rate": 0.027,
+            "auto_accept_count": 510,
+            "auto_reject_count": 463,
+            "human_review_count": 27,
+            "false_negatives": 16,
+            "false_positives": 2,
+            "true_positives": 461,
+            "true_negatives": 494
+          }
+        ]
+      }
+    },
+    "E2-E_LowPrevalence": {
+      "model_a_tx_only": {
+        "accuracy": 0.988,
+        "accuracy_ci": [
+          0.9791,
+          0.9931
+        ],
+        "precision": 0.9423,
+        "precision_ci": [
+          0.894,
+          0.9694
+        ],
+        "recall": 0.98,
+        "recall_ci": [
+          0.9429,
+          0.9932
+        ],
+        "f1": 0.9608,
+        "roc_auc": 0.9993,
+        "pr_auc": 0.9962,
+        "fpr": 0.0106,
+        "fpr_ci": [
+          0.0056,
+          0.02
+        ],
+        "fnr": 0.02,
+        "fnr_ci": [
+          0.0068,
+          0.0571
+        ],
+        "false_negatives": 3,
+        "false_positives": 9,
+        "true_positives": 147,
+        "true_negatives": 841,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "model_b_tx_prov": {
+        "accuracy": 0.985,
+        "accuracy_ci": [
+          0.9754,
+          0.9909
+        ],
+        "precision": 0.9245,
+        "precision_ci": [
+          0.8727,
+          0.9563
+        ],
+        "recall": 0.98,
+        "recall_ci": [
+          0.9429,
+          0.9932
+        ],
+        "f1": 0.9515,
+        "roc_auc": 0.9992,
+        "pr_auc": 0.9952,
+        "fpr": 0.0141,
+        "fpr_ci": [
+          0.0081,
+          0.0245
+        ],
+        "fnr": 0.02,
+        "fnr_ci": [
+          0.0068,
+          0.0571
+        ],
+        "false_negatives": 3,
+        "false_positives": 12,
+        "true_positives": 147,
+        "true_negatives": 838,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "delta": {
+        "delta_f1": -0.0093,
+        "delta_recall": 0.0,
+        "delta_fpr": 0.0035
+      },
+      "mcnemar_paired_test": {
+        "mcnemar_statistic": 0.5714,
+        "p_value": 0.449692,
+        "statistically_significant_05": false,
+        "statistically_significant_01": false,
+        "table": {
+          "both_correct": 983,
+          "model_a_only": 5,
+          "model_b_only": 2,
+          "both_incorrect": 10
+        },
+        "discordant_pairs": 7
+      }
+    }
+  },
+  "ablation_study": {
+    "E2-B": {
+      "group_a_tx_only": {
+        "accuracy": 0.986,
+        "accuracy_ci": [
+          0.9766,
+          0.9916
+        ],
+        "precision": 0.9595,
+        "precision_ci": [
+          0.9144,
+          0.9813
+        ],
+        "recall": 0.9467,
+        "recall_ci": [
+          0.8983,
+          0.9727
+        ],
+        "f1": 0.953,
+        "roc_auc": 0.9952,
+        "pr_auc": 0.9871,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.0533,
+        "fnr_ci": [
+          0.0273,
+          0.1017
+        ],
+        "false_negatives": 8,
+        "false_positives": 6,
+        "true_positives": 142,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "group_b1_count_only": {
+        "accuracy": 0.985,
+        "accuracy_ci": [
+          0.9754,
+          0.9909
+        ],
+        "precision": 0.9592,
+        "precision_ci": [
+          0.9138,
+          0.9812
+        ],
+        "recall": 0.94,
+        "recall_ci": [
+          0.8899,
+          0.9681
+        ],
+        "f1": 0.9495,
+        "roc_auc": 0.9956,
+        "pr_auc": 0.9873,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.06,
+        "fnr_ci": [
+          0.0319,
+          0.1101
+        ],
+        "false_negatives": 9,
+        "false_positives": 6,
+        "true_positives": 141,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "group_b2_structural": {
+        "accuracy": 0.986,
+        "accuracy_ci": [
+          0.9766,
+          0.9916
+        ],
+        "precision": 0.9595,
+        "precision_ci": [
+          0.9144,
+          0.9813
+        ],
+        "recall": 0.9467,
+        "recall_ci": [
+          0.8983,
+          0.9727
+        ],
+        "f1": 0.953,
+        "roc_auc": 0.9954,
+        "pr_auc": 0.9864,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.0533,
+        "fnr_ci": [
+          0.0273,
+          0.1017
+        ],
+        "false_negatives": 8,
+        "false_positives": 6,
+        "true_positives": 142,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      },
+      "group_b3_full_provenance": {
+        "accuracy": 0.986,
+        "accuracy_ci": [
+          0.9766,
+          0.9916
+        ],
+        "precision": 0.9595,
+        "precision_ci": [
+          0.9144,
+          0.9813
+        ],
+        "recall": 0.9467,
+        "recall_ci": [
+          0.8983,
+          0.9727
+        ],
+        "f1": 0.953,
+        "roc_auc": 0.9956,
+        "pr_auc": 0.9865,
+        "fpr": 0.0071,
+        "fpr_ci": [
+          0.0032,
+          0.0153
+        ],
+        "fnr": 0.0533,
+        "fnr_ci": [
+          0.0273,
+          0.1017
+        ],
+        "false_negatives": 8,
+        "false_positives": 6,
+        "true_positives": 142,
+        "true_negatives": 844,
+        "total": 1000,
+        "actual_fraud": 150,
+        "actual_legit": 850
+      }
+    }
+  },
+  "scientific_disclaimers": {
+    "calibration_evaluation_separation": "Strict separation enforced: Calibration performed on E2-B_cal (N=500, indices 0..499); in-distribution conformal evaluation performed on held-out E2-B_eval (N=500, indices 500..999). Zero overlap between calibration and evaluation sets.",
+    "conformal_guarantee": "Standard split conformal guarantees rely on exchangeability. Selective risk under shift is an empirical stress measurement rather than an asymptotic guarantee.",
+    "synthetic_data": "All evaluations are conducted on synthetic payment simulations (Seeds 4001\u20134005) and do not represent live production traffic.",
+    "statistical_significance": "All reported statistical tests (McNemar, Wilson CIs) are evaluated at alpha=0.05. The observed poisoning-scenario differences did not reach statistical significance at \u03b1=0.05 (McNemar p=0.1306).",
+    "poisoning_claim_discipline": "On the tested poisoning slice, Model B produced the measured recall shown in the experiment; the paired difference was not statistically significant.",
+    "statistical_uncertainty_note": "Observed variations between architectures across specific sub-slices reflect statistical uncertainty rather than guaranteed resilience."
+  },
+  "generated_artifacts": [
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_config.json",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_report.json",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_audit.json",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_metrics.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_predictions.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_risk_coverage.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_ablation.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_poisoning.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_shift.csv",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_risk_coverage.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_four_way_matrix.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_ablation.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_poisoning_stress.png",
+    "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\experiments\\phase_e2_distribution_shift.png"
+  ]
+}

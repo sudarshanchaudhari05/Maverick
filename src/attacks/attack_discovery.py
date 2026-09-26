@@ -30,7 +30,6 @@ from src.attacks.novelty_engine import (
     calculate_priority_score,
     generate_candidate_name,
 )
-from src.simulation.transaction_generator import TransactionGenerator
 from src.detection.predict import FraudDetector
 from src.utils.config import (
     DEFAULT_SEED,
@@ -300,6 +299,8 @@ class AttackDiscoveryEngine:
         seed: Optional[int] = None,
     ) -> Dict[str, pd.DataFrame]:
         """Generate synthetic transactions for each novel candidate."""
+        from src.simulation.transaction_generator import TransactionGenerator
+
         tx_seed = seed or (self.seed + 999)
         generator = TransactionGenerator(seed=tx_seed)
         datasets: Dict[str, pd.DataFrame] = {}

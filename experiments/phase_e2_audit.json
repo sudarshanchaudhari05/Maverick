@@ -1,0 +1,330 @@
+{
+  "audit_timestamp": "2026-09-25 18:57:21 UTC",
+  "phase": "E.2",
+  "phase_e2_status": "FROZEN",
+  "calibration_evaluation_separation_verified": true,
+  "zero_overlap_leakage_passed": true,
+  "label_independence_passed": true,
+  "no_future_lookahead": true,
+  "no_result_dependent_tuning": true,
+  "canonical_20_transaction_feature_overlap": {
+    "E2-A_vs_E2-B": 0,
+    "E2-A_vs_E2-C": 0,
+    "E2-A_vs_E2-D": 0,
+    "E2-A_vs_E2-E": 0,
+    "E2-B_vs_E2-C": 0,
+    "E2-B_vs_E2-D": 0,
+    "E2-B_vs_E2-E": 0,
+    "E2-C_vs_E2-D": 0,
+    "E2-C_vs_E2-E": 0,
+    "E2-D_vs_E2-E": 0
+  },
+  "complete_30_joint_feature_overlap": {
+    "E2-A_vs_E2-B": 0,
+    "E2-A_vs_E2-C": 0,
+    "E2-A_vs_E2-D": 0,
+    "E2-A_vs_E2-E": 0,
+    "E2-B_vs_E2-C": 0,
+    "E2-B_vs_E2-D": 0,
+    "E2-B_vs_E2-E": 0,
+    "E2-C_vs_E2-D": 0,
+    "E2-C_vs_E2-E": 0,
+    "E2-D_vs_E2-E": 0
+  },
+  "standalone_10_provenance_feature_overlap": {
+    "E2-A_vs_E2-B": 481,
+    "E2-A_vs_E2-C": 711,
+    "E2-A_vs_E2-D": 460,
+    "E2-A_vs_E2-E": 473,
+    "E2-B_vs_E2-C": 424,
+    "E2-B_vs_E2-D": 276,
+    "E2-B_vs_E2-E": 299,
+    "E2-C_vs_E2-D": 418,
+    "E2-C_vs_E2-E": 402,
+    "E2-D_vs_E2-E": 276
+  },
+  "shared_url_pool_explanation": "The provenance simulation samples chains of length 2-4 from a static catalog of 27 web URLs across 8,000 total transactions, yielding ~1,293 unique provenance feature vectors. Standalone provenance features naturally recur across datasets (e.g. distinct users visiting common checkout URLs), while full transaction records (20 features) and joint transaction+provenance records (30 features) have strictly zero overlap across all 10 dataset pairs.",
+  "diagnostics": {
+    "provenance_count": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0087,
+        "E2-B": 0.003,
+        "E2-C": 0.0344,
+        "E2-D": 0.0045,
+        "E2-E": -0.017
+      },
+      "conditional_probabilities": {}
+    },
+    "unique_domain_count": {
+      "correlations_across_datasets": {
+        "E2-A": -0.0048,
+        "E2-B": -0.0392,
+        "E2-C": 0.0333,
+        "E2-D": 0.0043,
+        "E2-E": -0.0285
+      },
+      "conditional_probabilities": {}
+    },
+    "unknown_domain_count": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0038,
+        "E2-B": -0.0663,
+        "E2-C": 0.0459,
+        "E2-D": -0.0451,
+        "E2-E": 0.0057
+      },
+      "conditional_probabilities": {}
+    },
+    "provenance_length": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0095,
+        "E2-B": -0.0075,
+        "E2-C": 0.0393,
+        "E2-D": 0.0095,
+        "E2-E": -0.0206
+      },
+      "conditional_probabilities": {}
+    },
+    "document_type_count": {
+      "correlations_across_datasets": {
+        "E2-A": -0.0083,
+        "E2-B": 0.0239,
+        "E2-C": 0.0629,
+        "E2-D": -0.0329,
+        "E2-E": -0.0398
+      },
+      "conditional_probabilities": {}
+    },
+    "instruction_source_present": {
+      "correlations_across_datasets": {
+        "E2-A": -0.0082,
+        "E2-B": -0.0579,
+        "E2-C": 0.0425,
+        "E2-D": -0.012,
+        "E2-E": 0.0079
+      },
+      "conditional_probabilities": {
+        "E2-A_P(fraud|instruction_source_present=1)": 0.1451,
+        "E2-B_P(fraud|instruction_source_present=1)": 0.1138,
+        "E2-C_P(fraud|instruction_source_present=1)": 0.1707,
+        "E2-D_P(fraud|instruction_source_present=1)": 0.4943,
+        "E2-E_P(fraud|instruction_source_present=1)": 0.1547
+      }
+    },
+    "domain_entropy": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0039,
+        "E2-B": -0.0607,
+        "E2-C": 0.0267,
+        "E2-D": -0.0444,
+        "E2-E": -0.0084
+      },
+      "conditional_probabilities": {}
+    },
+    "repeated_domain_count": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0226,
+        "E2-B": 0.07,
+        "E2-C": 0.0008,
+        "E2-D": 0.0,
+        "E2-E": 0.0186
+      },
+      "conditional_probabilities": {}
+    },
+    "external_domain_count": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0174,
+        "E2-B": -0.0565,
+        "E2-C": 0.0152,
+        "E2-D": 0.0011,
+        "E2-E": -0.0403
+      },
+      "conditional_probabilities": {}
+    },
+    "suspicious_source_indicator": {
+      "correlations_across_datasets": {
+        "E2-A": 0.0131,
+        "E2-B": -0.0734,
+        "E2-C": 0.0433,
+        "E2-D": -0.0552,
+        "E2-E": 0.0079
+      },
+      "conditional_probabilities": {
+        "E2-A_P(fraud|suspicious_source_indicator=1)": 0.1547,
+        "E2-B_P(fraud|suspicious_source_indicator=1)": 0.1235,
+        "E2-C_P(fraud|suspicious_source_indicator=1)": 0.1605,
+        "E2-D_P(fraud|suspicious_source_indicator=1)": 0.4863,
+        "E2-E_P(fraud|suspicious_source_indicator=1)": 0.1527
+      }
+    }
+  },
+  "leakage_checks": {
+    "status": "PASS",
+    "forbidden_token_check": "Zero target tokens in feature schemas",
+    "dataset_overlap_check": {
+      "E2-A_vs_E2-B": 0,
+      "E2-A_vs_E2-C": 0,
+      "E2-A_vs_E2-D": 0,
+      "E2-A_vs_E2-E": 0,
+      "E2-B_vs_E2-C": 0,
+      "E2-B_vs_E2-D": 0,
+      "E2-B_vs_E2-E": 0,
+      "E2-C_vs_E2-D": 0,
+      "E2-C_vs_E2-E": 0,
+      "E2-D_vs_E2-E": 0
+    },
+    "canonical_20_transaction_feature_overlap": {
+      "E2-A_vs_E2-B": 0,
+      "E2-A_vs_E2-C": 0,
+      "E2-A_vs_E2-D": 0,
+      "E2-A_vs_E2-E": 0,
+      "E2-B_vs_E2-C": 0,
+      "E2-B_vs_E2-D": 0,
+      "E2-B_vs_E2-E": 0,
+      "E2-C_vs_E2-D": 0,
+      "E2-C_vs_E2-E": 0,
+      "E2-D_vs_E2-E": 0
+    },
+    "complete_30_joint_feature_overlap": {
+      "E2-A_vs_E2-B": 0,
+      "E2-A_vs_E2-C": 0,
+      "E2-A_vs_E2-D": 0,
+      "E2-A_vs_E2-E": 0,
+      "E2-B_vs_E2-C": 0,
+      "E2-B_vs_E2-D": 0,
+      "E2-B_vs_E2-E": 0,
+      "E2-C_vs_E2-D": 0,
+      "E2-C_vs_E2-E": 0,
+      "E2-D_vs_E2-E": 0
+    },
+    "standalone_10_provenance_feature_overlap": {
+      "E2-A_vs_E2-B": 481,
+      "E2-A_vs_E2-C": 711,
+      "E2-A_vs_E2-D": 460,
+      "E2-A_vs_E2-E": 473,
+      "E2-B_vs_E2-C": 424,
+      "E2-B_vs_E2-D": 276,
+      "E2-B_vs_E2-E": 299,
+      "E2-C_vs_E2-D": 418,
+      "E2-C_vs_E2-E": 402,
+      "E2-D_vs_E2-E": 276
+    },
+    "shared_url_pool_explanation": "The provenance simulation samples chains of length 2-4 from a static catalog of 27 web URLs across 8,000 total transactions, yielding ~1,293 unique provenance feature vectors. Standalone provenance features naturally recur across datasets (e.g. distinct users visiting common checkout URLs), while full transaction records (20 features) and joint transaction+provenance records (30 features) have strictly zero overlap across all 10 dataset pairs.",
+    "calibration_evaluation_separation_verified": true,
+    "label_independence_status": "PASS (No deterministic shortcuts, no P(fraud|prov)=1.0, max corr < 0.85)",
+    "diagnostics": {
+      "provenance_count": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0087,
+          "E2-B": 0.003,
+          "E2-C": 0.0344,
+          "E2-D": 0.0045,
+          "E2-E": -0.017
+        },
+        "conditional_probabilities": {}
+      },
+      "unique_domain_count": {
+        "correlations_across_datasets": {
+          "E2-A": -0.0048,
+          "E2-B": -0.0392,
+          "E2-C": 0.0333,
+          "E2-D": 0.0043,
+          "E2-E": -0.0285
+        },
+        "conditional_probabilities": {}
+      },
+      "unknown_domain_count": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0038,
+          "E2-B": -0.0663,
+          "E2-C": 0.0459,
+          "E2-D": -0.0451,
+          "E2-E": 0.0057
+        },
+        "conditional_probabilities": {}
+      },
+      "provenance_length": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0095,
+          "E2-B": -0.0075,
+          "E2-C": 0.0393,
+          "E2-D": 0.0095,
+          "E2-E": -0.0206
+        },
+        "conditional_probabilities": {}
+      },
+      "document_type_count": {
+        "correlations_across_datasets": {
+          "E2-A": -0.0083,
+          "E2-B": 0.0239,
+          "E2-C": 0.0629,
+          "E2-D": -0.0329,
+          "E2-E": -0.0398
+        },
+        "conditional_probabilities": {}
+      },
+      "instruction_source_present": {
+        "correlations_across_datasets": {
+          "E2-A": -0.0082,
+          "E2-B": -0.0579,
+          "E2-C": 0.0425,
+          "E2-D": -0.012,
+          "E2-E": 0.0079
+        },
+        "conditional_probabilities": {
+          "E2-A_P(fraud|instruction_source_present=1)": 0.1451,
+          "E2-B_P(fraud|instruction_source_present=1)": 0.1138,
+          "E2-C_P(fraud|instruction_source_present=1)": 0.1707,
+          "E2-D_P(fraud|instruction_source_present=1)": 0.4943,
+          "E2-E_P(fraud|instruction_source_present=1)": 0.1547
+        }
+      },
+      "domain_entropy": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0039,
+          "E2-B": -0.0607,
+          "E2-C": 0.0267,
+          "E2-D": -0.0444,
+          "E2-E": -0.0084
+        },
+        "conditional_probabilities": {}
+      },
+      "repeated_domain_count": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0226,
+          "E2-B": 0.07,
+          "E2-C": 0.0008,
+          "E2-D": 0.0,
+          "E2-E": 0.0186
+        },
+        "conditional_probabilities": {}
+      },
+      "external_domain_count": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0174,
+          "E2-B": -0.0565,
+          "E2-C": 0.0152,
+          "E2-D": 0.0011,
+          "E2-E": -0.0403
+        },
+        "conditional_probabilities": {}
+      },
+      "suspicious_source_indicator": {
+        "correlations_across_datasets": {
+          "E2-A": 0.0131,
+          "E2-B": -0.0734,
+          "E2-C": 0.0433,
+          "E2-D": -0.0552,
+          "E2-E": 0.0079
+        },
+        "conditional_probabilities": {
+          "E2-A_P(fraud|suspicious_source_indicator=1)": 0.1547,
+          "E2-B_P(fraud|suspicious_source_indicator=1)": 0.1235,
+          "E2-C_P(fraud|suspicious_source_indicator=1)": 0.1605,
+          "E2-D_P(fraud|suspicious_source_indicator=1)": 0.4863,
+          "E2-E_P(fraud|suspicious_source_indicator=1)": 0.1527
+        }
+      }
+    }
+  }
+}

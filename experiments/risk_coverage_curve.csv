@@ -1,0 +1,76 @@
+regime_key,regime_name,tau_accept,coverage,abstention_rate,fnr_among_accepted,false_omission_rate,selective_fnr,observed_fnr,false_negatives,accepted_count
+same_distribution,Same-Distribution (A),0.01,0.7335,0.2665,0.0,0.0,0.0,0.0,0,1147
+adversarial,Adversarial C (B),0.01,0.644,0.356,0.0116,0.0116,0.0793,0.0433,13,1125
+gen2_shifted,Gen-2 Novel D (C),0.01,0.6583,0.3417,0.0358,0.0358,0.8333,0.3125,25,698
+same_distribution,Same-Distribution (A),0.0283,0.8375,0.1625,0.0,0.0,0.0,0.0,0,1355
+adversarial,Adversarial C (B),0.0283,0.7625,0.2375,0.0191,0.0191,0.1469,0.0867,26,1362
+gen2_shifted,Gen-2 Novel D (C),0.0283,0.7898,0.2102,0.0464,0.0464,0.8864,0.4875,39,840
+same_distribution,Same-Distribution (A),0.0467,0.8795,0.1205,0.0,0.0,0.0,0.0,0,1439
+adversarial,Adversarial C (B),0.0467,0.8065,0.1935,0.0234,0.0234,0.1838,0.1133,34,1450
+gen2_shifted,Gen-2 Novel D (C),0.0467,0.8343,0.1657,0.0484,0.0484,0.8958,0.5375,43,888
+same_distribution,Same-Distribution (A),0.065,0.898,0.102,0.0,0.0,0.0,0.0,0,1476
+adversarial,Adversarial C (B),0.065,0.8285,0.1715,0.0261,0.0261,0.2053,0.13,39,1494
+gen2_shifted,Gen-2 Novel D (C),0.065,0.8648,0.1352,0.051,0.051,0.9038,0.5875,47,921
+same_distribution,Same-Distribution (A),0.0833,0.916,0.084,0.0,0.0,0.0,0.0,0,1512
+adversarial,Adversarial C (B),0.0833,0.846,0.154,0.0255,0.0255,0.2053,0.13,39,1529
+gen2_shifted,Gen-2 Novel D (C),0.0833,0.8769,0.1231,0.0503,0.0503,0.9038,0.5875,47,934
+same_distribution,Same-Distribution (A),0.1017,0.9215,0.0785,0.0,0.0,0.0,0.0,0,1523
+adversarial,Adversarial C (B),0.1017,0.867,0.133,0.0286,0.0286,0.2296,0.15,45,1571
+gen2_shifted,Gen-2 Novel D (C),0.1017,0.8954,0.1046,0.0514,0.0514,0.9074,0.6125,49,954
+same_distribution,Same-Distribution (A),0.12,0.927,0.073,0.0,0.0,0.0,0.0,0,1534
+adversarial,Adversarial C (B),0.12,0.8795,0.1205,0.0307,0.0307,0.245,0.1633,49,1596
+gen2_shifted,Gen-2 Novel D (C),0.12,0.9083,0.0917,0.0548,0.0548,0.9138,0.6625,53,968
+same_distribution,Same-Distribution (A),0.1383,0.9325,0.0675,0.0,0.0,0.0,0.0,0,1545
+adversarial,Adversarial C (B),0.1383,0.888,0.112,0.0316,0.0316,0.2525,0.17,51,1613
+gen2_shifted,Gen-2 Novel D (C),0.1383,0.913,0.087,0.0565,0.0565,0.9167,0.6875,55,973
+same_distribution,Same-Distribution (A),0.1567,0.941,0.059,0.0,0.0,0.0,0.0,0,1562
+adversarial,Adversarial C (B),0.1567,0.8965,0.1035,0.0325,0.0325,0.2598,0.1767,53,1630
+gen2_shifted,Gen-2 Novel D (C),0.1567,0.9222,0.0778,0.057,0.057,0.918,0.7,56,983
+same_distribution,Same-Distribution (A),0.175,0.9455,0.0545,0.0,0.0,0.0,0.0,0,1571
+adversarial,Adversarial C (B),0.175,0.9015,0.0985,0.0329,0.0329,0.2634,0.18,54,1640
+gen2_shifted,Gen-2 Novel D (C),0.175,0.925,0.075,0.0578,0.0578,0.9194,0.7125,57,986
+same_distribution,Same-Distribution (A),0.1933,0.951,0.049,0.0,0.0,0.0,0.0,0,1582
+adversarial,Adversarial C (B),0.1933,0.906,0.094,0.0327,0.0327,0.2634,0.18,54,1649
+gen2_shifted,Gen-2 Novel D (C),0.1933,0.925,0.075,0.0578,0.0578,0.9194,0.7125,57,986
+same_distribution,Same-Distribution (A),0.2117,0.9575,0.0425,0.0,0.0,0.0,0.0,0,1595
+adversarial,Adversarial C (B),0.2117,0.91,0.09,0.0338,0.0338,0.2705,0.1867,56,1657
+gen2_shifted,Gen-2 Novel D (C),0.2117,0.9278,0.0722,0.0586,0.0586,0.9206,0.725,58,989
+same_distribution,Same-Distribution (A),0.23,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.23,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.23,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.2483,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.2483,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.2483,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.2667,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.2667,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.2667,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.285,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.285,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.285,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.3033,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.3033,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.3033,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.3217,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.3217,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.3217,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.34,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.34,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.34,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.3583,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.3583,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.3583,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.3767,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.3767,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.3767,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.395,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.395,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.395,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.4133,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.4133,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.4133,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.4317,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.4317,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.4317,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994
+same_distribution,Same-Distribution (A),0.45,0.9615,0.0385,0.0,0.0,0.0,0.0,0,1603
+adversarial,Adversarial C (B),0.45,0.9115,0.0885,0.0355,0.0355,0.281,0.1967,59,1660
+gen2_shifted,Gen-2 Novel D (C),0.45,0.9324,0.0676,0.0584,0.0584,0.9206,0.725,58,994

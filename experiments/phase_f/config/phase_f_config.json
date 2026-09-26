@@ -1,0 +1,141 @@
+{
+  "phase": "F",
+  "name": "Worst-Slice Mining & Targeted Adaptive Attack Discovery",
+  "status": "PHASE F — IMPLEMENTED, PENDING INDEPENDENT AUDIT",
+  "methodology_frozen": true,
+  "experiments": {
+    "F1": {
+      "name": "Worst-Slice Discovery",
+      "dataset": "F-D1",
+      "purpose": "Identify detector weak spots via multi-dimensional slice mining"
+    },
+    "F2": {
+      "name": "Random Attack Baseline",
+      "dataset": "F-D2",
+      "purpose": "Evaluate performance against independent non-targeted attacks"
+    },
+    "F3": {
+      "name": "Targeted Attack Generation",
+      "dataset": "F-D3",
+      "purpose": "Generate targeted adversarial attacks from Top-5 discovered slices for hardening"
+    },
+    "F4": {
+      "name": "Targeted Hardening",
+      "training_population": "baseline_train + F-D3",
+      "purpose": "Retrain detector using targeted adversarial samples"
+    },
+    "F5": {
+      "name": "Unseen Targeted V2",
+      "dataset": "F-D4",
+      "purpose": "Primary unseen generalization evaluation against intensified slice attacks"
+    }
+  },
+  "datasets": {
+    "F-D1": {
+      "name": "Discovery Dataset",
+      "size": 4000,
+      "seed": 6001,
+      "fraud_ratio": 0.15,
+      "expected_fraud": 600,
+      "expected_legitimate": 3400,
+      "purpose": "Worst-slice discovery only (NOT final evaluation)"
+    },
+    "F-D2": {
+      "name": "Random Attack Baseline",
+      "size": 2000,
+      "seed": 6002,
+      "fraud_ratio": 0.15,
+      "expected_fraud": 300,
+      "expected_legitimate": 1700,
+      "purpose": "Difficulty baseline of non-targeted randomly generated attacks"
+    },
+    "F-D3": {
+      "name": "Targeted Adversarial Hardening Set",
+      "size": 2500,
+      "seed": 6003,
+      "fraud_ratio": 0.50,
+      "expected_fraud": 1250,
+      "expected_legitimate": 1250,
+      "samples_per_slice": 500,
+      "note": "50% fraud is an adversarial hardening distribution, not realistic payment traffic",
+      "purpose": "Targeted hardening only"
+    },
+    "F-D4": {
+      "name": "Unseen Targeted V2 Test",
+      "size": 2000,
+      "seed": 6004,
+      "fraud_ratio": 0.15,
+      "expected_fraud": 300,
+      "expected_legitimate": 1700,
+      "purpose": "Primary final generalization dataset (evaluation-only, isolated from discovery and training)"
+    }
+  },
+  "slice_dimensions": {
+    "family_s1_attack_genome": [
+      "attack_family",
+      "attack_archetype",
+      "entry/payment_channel",
+      "evasion_strategy",
+      "amount_strategy",
+      "temporal_strategy",
+      "identity_strategy",
+      "merchant_strategy",
+      "geographic_strategy"
+    ],
+    "family_s2_transaction": [
+      "amount_bucket",
+      "payment_channel",
+      "merchant_category",
+      "geographic_region_or_strategy",
+      "temporal_bucket",
+      "identity_strategy"
+    ],
+    "family_s3_detector": [
+      "fraud_probability_bucket",
+      "risk_level"
+    ]
+  },
+  "slice_mining_rules": {
+    "max_depth": 3,
+    "min_total_support": 50,
+    "min_fraud_support": 20,
+    "ranking": [
+      "FNR_descending",
+      "fraud_support_descending",
+      "total_support_descending"
+    ],
+    "top_k": 5,
+    "persistent_id_prefix": "F-SLICE-"
+  },
+  "model_hyperparameters": {
+    "architecture": "xgboost",
+    "n_estimators": 150,
+    "max_depth": 6,
+    "learning_rate": 0.08,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "random_state": 6003
+  },
+  "success_gates": {
+    "G1": {
+      "name": "Slice Improvement",
+      "rule": "FNR_hardened < FNR_baseline on >= 4 of 5 discovered slices"
+    },
+    "G2": {
+      "name": "Overall F5 Recall",
+      "rule": "On F-D4, Recall_hardened > Recall_baseline"
+    },
+    "G3": {
+      "name": "FPR Protection",
+      "rule": "On F-D4, Hardened FPR must not increase by > +1.0 percentage point"
+    },
+    "G4": {
+      "name": "Random Attack Preservation",
+      "rule": "On F-D2, Hardened recall must not decrease by > 2.0 percentage points"
+    },
+    "G5": {
+      "name": "Unseen Targeted Generalization",
+      "rule": "On F-D4, FNR_hardened < FNR_baseline"
+    }
+  }
+}

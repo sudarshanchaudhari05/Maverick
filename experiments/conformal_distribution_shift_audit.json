@@ -1,0 +1,44 @@
+﻿{
+  "audit_name": "Phase C Independent Results Audit — Conformal Distribution Shift & Risk-Coverage",
+  "audit_timestamp": "2026-09-18 18:55:00 UTC",
+  "auditor_role": "Independent Scientific & Verification Auditor",
+  "overall_audit_verdict": "CONDITIONAL PASS WITH TERMINOLOGY & METRIC-ALIGNMENT FINDINGS",
+  "summary_by_audit": {
+    "audit_1_metric_definitions": {
+      "verdict": "FAIL (Discrepancy between code formula and report terminology)",
+      "findings": "The metric labeled 'fnr_among_accepted' in the report is mathematically False Omission Rate (FOR = FN / Accepted), not a False Negative Rate. Furthermore, 'observed_fnr' is computed relative to total population fraud (FN / Total Fraud), whereas 'recall_auto' is computed relative to decided fraud (TP / (TP + FN)), creating a subtle denominator divergence."
+    },
+    "audit_2_manual_arithmetic_verification": {
+      "verdict": "PASS (Exact Arithmetic Match)",
+      "findings": "All 204 individual metric cells across all 12 rows (4 target FNR levels x 3 regimes) in conformal_distribution_shift_metrics.csv and conformal_distribution_shift_report.json match independent recomputations with 0 numerical discrepancies."
+    },
+    "audit_3_terminology": {
+      "verdict": "FAIL (Misleading Metric Naming)",
+      "findings": "Calling FN / Accepted 'FNR among accepted' is mathematically inaccurate. The denominator contains all accepted transactions (legitimate and fraud), making it False Omission Rate (FOR = 1 - NPV). Conventional FNR among decided samples is FN / (TP + FN) = 1 - recall_auto."
+    },
+    "audit_4_risk_coverage": {
+      "verdict": "FAIL (Monotonicity Claim Inaccurate)",
+      "findings": "Coverage is strictly monotonic with respect to tau_accept across all regimes. However, selective risk (FOR = FN / Accepted) is NOT strictly monotonic in Adversarial B and Gen-2 C. Micro-dips occur when an interval of tau accepts only legitimate transactions, expanding the denominator without increasing false negatives (e.g. Adversarial Step 3->4: Risk drops from 2.61% to 2.55%)."
+    },
+    "audit_5_data_leakage": {
+      "verdict": "PASS (Zero Overlap Verified)",
+      "findings": "Exact feature-tuple set intersection across all core features confirms 0 overlapping transactions between Calibration and Same-Distribution, Adversarial C, and Gen-2 Novel D. No evaluation data was used to derive calibration quantiles."
+    },
+    "audit_6_dataset_counts": {
+      "verdict": "PASS (Exact Match)",
+      "findings": "Calibration (2000 total, 283 fraud, 1717 legit), Same-Dist (2000 total, 309 fraud, 1691 legit), Adversarial C (2000 total, 300 fraud, 1700 legit), and Gen-2 Novel D (1080 total, 80 fraud, 1000 legit) match raw CSV disk artifacts exactly."
+    },
+    "audit_7_threshold_calculation": {
+      "verdict": "PASS WITH METHODOLOGICAL NOTE",
+      "findings": "Thresholds 0.0460, 0.0920, 0.2300, 0.4000 are 100% reproducible. In practice, because baseline synthetic fraud scores are extremely high (q0.01 = 0.8453), the minimum operation is always governed by the conformal risk bound q_hat * (target_fnr / alpha) clipped at 0.40."
+    },
+    "audit_8_exchangeability_claim": {
+      "verdict": "PASS WITH QUALIFICATION",
+      "findings": "Regime A does not 'prove' natural exchangeability; it provides an empirical approximation using an independent slice from the same stationary synthetic generator. In Adversarial B and Gen-2 C, exchangeability is explicitly violated."
+    },
+    "audit_9_result_integrity": {
+      "verdict": "PASS (Deterministic & Reproducible)",
+      "findings": "All JSON, CSV, and PNG artifacts match current code execution. Test suite (89/89 tests passing) verified."
+    }
+  }
+}

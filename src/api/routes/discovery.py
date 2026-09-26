@@ -30,6 +30,7 @@ from src.attacks.novelty_engine import (
 )
 from src.attacks.attack_discovery import AttackDiscoveryEngine
 from src.simulation.transaction_generator import TransactionGenerator
+from src.detection.model_registry import ModelRegistry
 
 router = APIRouter(prefix="/discovery", tags=["Novel Attack Discovery"])
 
@@ -122,20 +123,31 @@ def generate_candidate(req: GenerateCandidateRequest) -> GenerateCandidateRespon
 
 @router.post("/evaluate-candidate", response_model=EvaluateCandidateResponse)
 def evaluate_candidate(req: EvaluateCandidateRequest, request: Request) -> EvaluateCandidateResponse:
-    """Simulate transactions for the candidate genome and test against the baseline detector."""
-    detector_baseline = getattr(request.app.state, "detector_baseline", None)
-    if detector_baseline is None:
-        from src.utils.config import MODELS_DIR
-        from src.detection.predict import FraudDetector
-        baseline_path = MODELS_DIR / "baseline_detector.joblib"
-        if baseline_path.exists():
+    """Simulate transactions for the candidate genome and test against the active detector."""
+    role = (req.detector_role or "active").lower()
+    registry = getattr(request.app.state, "model_registry", None) or ModelRegistry()
+
+    if role == "baseline":
+        detector = getattr(request.app.state, "detector_baseline", None)
+        model_ver = "baseline_v1"
+        if detector is None:
+            detector = registry.load_baseline_detector()
+            request.app.state.detector_baseline = detector
+    else:
+        role = "active"
+        detector = getattr(request.app.state, "detector_active", None)
+        model_ver = getattr(request.app.state, "active_model_version", None) or registry.get_active_version()
+        if detector is None:
             try:
-                detector_baseline = FraudDetector(artifact_path=baseline_path)
-                request.app.state.detector_baseline = detector_baseline
+                detector = registry.load_active_detector()
+                request.app.state.detector_active = detector
+                request.app.state.active_model_version = model_ver
             except Exception:
-                pass
-        if detector_baseline is None:
-            raise HTTPException(status_code=503, detail="Baseline detector is not loaded in application state.")
+                detector = getattr(request.app.state, "detector_baseline", None)
+                model_ver = "baseline_v1"
+
+    if detector is None:
+        raise HTTPException(status_code=503, detail="Detector model is not available in application state.")
 
     # Validate and build genome object
     try:
@@ -169,7 +181,7 @@ def evaluate_candidate(req: EvaluateCandidateRequest, request: Request) -> Evalu
         txs.append(tx)
 
     df_test = pd.DataFrame(txs)
-    probs = detector_baseline.predict_proba(df_test)
+    probs = detector.predict_proba(df_test)
     preds = (probs >= 0.50).astype(int)
 
     detected_count = int(np.sum(preds == 1))
@@ -202,6 +214,8 @@ def evaluate_candidate(req: EvaluateCandidateRequest, request: Request) -> Evalu
 
     return EvaluateCandidateResponse(
         candidate_name=req.candidate_name or "Synthetic Attack Candidate",
+        detector_role=role,
+        model_version=model_ver,
         total_tested=n_samples,
         detected_count=detected_count,
         missed_count=missed_count,

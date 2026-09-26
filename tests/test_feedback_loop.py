@@ -12,15 +12,21 @@ from src.utils.config import MODELS_DIR
 
 def test_feedback_loop_execution(tmp_path):
     """Verify end-to-end feedback loop runs and generates required artifacts."""
-    loop = AdaptiveFeedbackLoop(
-        baseline_seed=42,
-        adversarial_train_seed=101,
-        unseen_test_seed=1337,
-        output_dir=tmp_path,
-    )
+    baseline_path = MODELS_DIR / "baseline_detector.joblib"
+    backup = baseline_path.read_bytes() if baseline_path.exists() else None
+    try:
+        loop = AdaptiveFeedbackLoop(
+            baseline_seed=42,
+            adversarial_train_seed=101,
+            unseen_test_seed=1337,
+            output_dir=tmp_path,
+        )
 
-    # Run quick cycle with 400 samples
-    results = loop.run_cycle(n_samples=400, fraud_ratio=0.20, mutation_intensity=0.60)
+        # Run quick cycle with 400 samples
+        results = loop.run_cycle(n_samples=400, fraud_ratio=0.20, mutation_intensity=0.60)
+    finally:
+        if backup is not None:
+            baseline_path.write_bytes(backup)
 
     assert "seeds" in results
     assert "normal_test_set_performance" in results

@@ -1,0 +1,13 @@
+regime_name,regime_key,target_fnr,acceptance_threshold,q_hat,observed_fnr,fnr_among_accepted,false_omission_rate,selective_fnr,coverage,abstention_rate,automatic_decision_count,human_review_count,accepted_count,blocked_count,false_negatives,false_positives,true_positives,true_negatives,total_evaluated,precision_auto,recall_auto,is_violation,degradation,degradation_pts
+Same-Distribution (A),same_distribution,0.01,0.046,0.23004,0.0,0.0,0.0,0.0,0.878,0.122,1756,244,1436,320,0,12,308,1436,2000,0.9625,1.0,False,-0.01,-1.0
+Adversarial C (B),adversarial,0.01,0.046,0.23004,0.1133,0.0235,0.0235,0.1838,0.8055,0.1945,1611,389,1448,163,34,12,151,1414,2000,0.9264,0.8162,True,0.1033,10.33
+Gen-2 Novel D (C),gen2_shifted,0.01,0.046,0.23004,0.5375,0.0486,0.0486,0.8958,0.8315,0.1685,898,182,885,13,43,8,5,842,1080,0.3846,0.1042,True,0.5275,52.75
+Same-Distribution (A),same_distribution,0.02,0.092,0.23004,0.0,0.0,0.0,0.0,0.918,0.082,1836,164,1516,320,0,12,308,1516,2000,0.9625,1.0,False,-0.02,-2.0
+Adversarial C (B),adversarial,0.02,0.092,0.23004,0.14,0.0272,0.0272,0.2176,0.854,0.146,1708,292,1545,163,42,12,151,1503,2000,0.9264,0.7824,True,0.12,12.0
+Gen-2 Novel D (C),gen2_shifted,0.02,0.092,0.23004,0.6,0.051,0.051,0.9057,0.8843,0.1157,955,125,942,13,48,8,5,894,1080,0.3846,0.0943,True,0.58,58.0
+Same-Distribution (A),same_distribution,0.05,0.23,0.23004,0.0,0.0,0.0,0.0,0.9615,0.0385,1923,77,1603,320,0,12,308,1603,2000,0.9625,1.0,False,-0.05,-5.0
+Adversarial C (B),adversarial,0.05,0.23,0.23004,0.1967,0.0355,0.0355,0.281,0.9115,0.0885,1823,177,1660,163,59,12,151,1601,2000,0.9264,0.719,True,0.1467,14.67
+Gen-2 Novel D (C),gen2_shifted,0.05,0.23,0.23004,0.725,0.0584,0.0584,0.9206,0.9324,0.0676,1007,73,994,13,58,8,5,936,1080,0.3846,0.0794,True,0.675,67.5
+Same-Distribution (A),same_distribution,0.1,0.4,0.23004,0.0,0.0,0.0,0.0,0.9615,0.0385,1923,77,1603,320,0,12,308,1603,2000,0.9625,1.0,False,-0.1,-10.0
+Adversarial C (B),adversarial,0.1,0.4,0.23004,0.1967,0.0355,0.0355,0.281,0.9115,0.0885,1823,177,1660,163,59,12,151,1601,2000,0.9264,0.719,True,0.0967,9.67
+Gen-2 Novel D (C),gen2_shifted,0.1,0.4,0.23004,0.725,0.0584,0.0584,0.9206,0.9324,0.0676,1007,73,994,13,58,8,5,936,1080,0.3846,0.0794,True,0.625,62.5

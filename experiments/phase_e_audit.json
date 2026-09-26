@@ -1,0 +1,22 @@
+{
+  "audit_timestamp": "2026-09-22 10:51:30 UTC",
+  "phase": "E.1",
+  "phase_e_status": "FROZEN AND COMPLETE",
+  "freeze_status": "FROZEN AND COMPLETE",
+  "detector_artifact": "C:\\Users\\sudar\\Documents\\Collage\\FraudForge-AI\\models\\baseline_detector.joblib",
+  "detector_hash_verified": true,
+  "zero_overlap_leakage_passed": true,
+  "delayed_label_protocol_enforced": true,
+  "no_future_lookahead": true,
+  "no_result_dependent_tuning": true,
+  "plots_verified": [
+    "phase_e_drift_timeline.png",
+    "phase_e_risk_over_time.png",
+    "phase_e_coverage_over_time.png",
+    "phase_e_abstention_over_time.png",
+    "phase_e_detection_delay.png",
+    "phase_e_false_alarms.png",
+    "phase_e_calibration_events.png",
+    "phase_e_risk_coverage_tradeoff.png"
+  ]
+}
