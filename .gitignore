@@ -47,6 +47,7 @@ htmlcov/
 # Data and Models (store metadata or sample only)
 models/*.pkl
 models/*.joblib
+!models/baseline_detector.joblib
 models/*.json
 data/generated/*.csv
 data/processed/*.csv

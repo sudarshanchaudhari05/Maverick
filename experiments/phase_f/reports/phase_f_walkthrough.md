@@ -45,10 +45,10 @@ Slice search evaluated all 17 dimensions across Families S1 (Transaction Attribu
 | Slice ID | Targetable Slice Definition | Depth | Support (Fraud / Total) | Baseline FNR | Wilson 95% Score CI | Hardened FNR | FNR $\Delta$ |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **F-SLICE-001** | `amount_bucket`: medium (50-200)<br>`payment_channel`: pos_contactless | 2 | 21 / 672 | 80.95% | [60.00%, 92.33%] | 6.43% | **-15.00 pp** |
-| **F-SLICE-002** | `merchant_strategy`: single_target<br>`merchant_category`: retail | 2 | 56 / 56 | 64.29% | [51.19%, 75.54%] | 4.98% | **-16.42 pp** |
+| **F-SLICE-002** | `merchant_strategy`: single_target<br>`merchant_category`: retail | 2 | 56 / 56 | 64.29% | [51.19%, 75.54%] | 5.47% | **-15.92 pp** |
 | **F-SLICE-003** | `payment_channel`: pos_contactless<br>`geographic_region_or_strategy`: domestic | 2 | 26 / 1103 | 61.54% | [42.53%, 77.57%] | 6.43% | **-15.00 pp** |
-| **F-SLICE-004** | `identity_strategy`: existing_account<br>`geographic_strategy`: domestic_matching<br>`merchant_category`: retail | 3 | 50 / 50 | 60.00% | [46.18%, 72.39%] | 4.98% | **-16.42 pp** |
-| **F-SLICE-005** | `geographic_strategy`: domestic_matching<br>`merchant_category`: retail<br>`geographic_region_or_strategy`: domestic | 3 | 57 / 57 | 57.89% | [44.98%, 69.81%] | 4.98% | **-16.42 pp** |
+| **F-SLICE-004** | `identity_strategy`: existing_account<br>`geographic_strategy`: domestic_matching<br>`merchant_category`: retail | 3 | 50 / 50 | 60.00% | [46.18%, 72.39%] | 5.47% | **-15.92 pp** |
+| **F-SLICE-005** | `geographic_strategy`: domestic_matching<br>`merchant_category`: retail<br>`geographic_region_or_strategy`: domestic | 3 | 57 / 57 | 57.89% | [44.98%, 69.81%] | 5.47% | **-15.92 pp** |
 
 ---
 
@@ -58,7 +58,7 @@ All 5 locked success gates passed conclusively:
 
 | Gate | Description & Locked Requirement | Metric Baseline | Metric Hardened | Margin / Result | Status |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **G1** | **Slice Improvement**: Hardened FNR < Baseline FNR on $\ge 4$ of 5 discovered slices | — | — | **5 of 5 slices improved** (FNR reduced by 15.00 to 16.42 pp) | **PASS** |
+| **G1** | **Slice Improvement**: Hardened FNR < Baseline FNR on $\ge 4$ of 5 discovered slices | — | — | **5 of 5 slices improved** (FNR reduced by 15.00 to 15.92 pp) | **PASS** |
 | **G2** | **Overall F5 Recall**: On F-D4 (Unseen V2), $\text{Recall}_{\text{hardened}} > \text{Recall}_{\text{baseline}}$ | 81.00% | 94.67% | **+13.67 pp** | **PASS** |
 | **G3** | **FPR Protection**: On F-D4, Hardened FPR must not increase by $> +1.0$ pp | 1.29% | 1.88% | **+0.59 pp** (well within $\le +1.0$ pp limit) | **PASS** |
 | **G4** | **Random Attack Preservation**: On F-D2, Hardened recall must not decrease by $> 2.0$ pp | 81.67% | 97.67% | **+16.00 pp** (no catastrophic forgetting; substantial gain) | **PASS** |
