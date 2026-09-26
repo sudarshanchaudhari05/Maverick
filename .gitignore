@@ -50,6 +50,7 @@ models/*.joblib
 !models/baseline_detector.joblib
 models/*.json
 data/generated/*.csv
+!data/generated/synthetic_transactions_10k.csv
 data/processed/*.csv
 !data/generated/.gitkeep
 !data/raw/.gitkeep
