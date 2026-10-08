@@ -6438,10 +6438,15 @@
       if (v2 && v2.model_a_baseline && v2.model_b_hardened) {
         const mA = v2.model_a_baseline;
         const mB = v2.model_b_hardened;
+        const fnrA = mA.FNR !== undefined ? mA.FNR : mA.fnr;
+        const fnrB = mB.FNR !== undefined ? mB.FNR : mB.fnr;
+        const fprA = mA.FPR !== undefined ? mA.FPR : mA.fpr;
+        const fprB = mB.FPR !== undefined ? mB.FPR : mB.fpr;
+
         const delta = v2.delta_metrics || {
           delta_recall: mB.recall - mA.recall,
-          delta_fnr: mB.fnr - mA.fnr,
-          delta_fpr: mB.fpr - mA.fpr
+          delta_fnr: fnrB - fnrA,
+          delta_fpr: fprB - fprA
         };
 
         const elRecB = document.getElementById("kpi-f-recall-hardened");
@@ -6454,18 +6459,18 @@
         const elFnrB = document.getElementById("kpi-f-fnr-hardened");
         const elFnrA = document.getElementById("kpi-f-fnr-baseline");
         const elFnrDelta = document.getElementById("kpi-f-fnr-delta");
-        if (elFnrB) elFnrB.textContent = (mB.fnr * 100).toFixed(2) + "%";
-        if (elFnrA) elFnrA.textContent = (mA.fnr * 100).toFixed(2) + "%";
+        if (elFnrB) elFnrB.textContent = (fnrB * 100).toFixed(2) + "%";
+        if (elFnrA) elFnrA.textContent = (fnrA * 100).toFixed(2) + "%";
         if (elFnrDelta) {
-          const cut = mA.fnr > 0 ? (((mA.fnr - mB.fnr) / mA.fnr) * 100).toFixed(1) : "0.0";
+          const cut = fnrA > 0 ? (((fnrA - fnrB) / fnrA) * 100).toFixed(1) : "0.0";
           elFnrDelta.textContent = (delta.delta_fnr * 100).toFixed(2) + " pp (" + cut + "% cut in missed fraud)";
         }
 
         const elFprB = document.getElementById("kpi-f-fpr-hardened");
         const elFprA = document.getElementById("kpi-f-fpr-baseline");
         const elFprDelta = document.getElementById("kpi-f-fpr-delta");
-        if (elFprB) elFprB.textContent = (mB.fpr * 100).toFixed(2) + "%";
-        if (elFprA) elFprA.textContent = (mA.fpr * 100).toFixed(2) + "%";
+        if (elFprB) elFprB.textContent = (fprB * 100).toFixed(2) + "%";
+        if (elFprA) elFprA.textContent = (fprA * 100).toFixed(2) + "%";
         if (elFprDelta) elFprDelta.textContent = (delta.delta_fpr >= 0 ? "+" : "") + (delta.delta_fpr * 100).toFixed(2) + " pp (Limit \u2264 +1.0 pp)";
       }
 
